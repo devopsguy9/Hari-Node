@@ -1,0 +1,1 @@
+{"version":3,"file":"AppController.js","sourceRoot":"","sources":["../../server/routes/AppController.ts"],"names":[],"mappings":";;AAAA,+DAA4D;AAG5D;IAAA;IAYA,CAAC;IATG,wBAAwB;IACxB,4BAA4B;IAC5B,wCAAwC;IACxC,IAAI;IAEJ,sCAAc,GAAd,UAAe,MAAW;QACtB,MAAM,CAAC,GAAG,CAAC,OAAO,EAAE,IAAI,+BAAc,EAAE,CAAC,SAAS,EAAE,CAAC,CAAC;IAE1D,CAAC;IACL,oBAAC;AAAD,CAAC,AAZD,IAYC;AAZY,sCAAa"}
