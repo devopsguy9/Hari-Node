@@ -1,1 +1,1 @@
-lk Man SCM Dev Repository
+Milk Man SCM Dev Repository

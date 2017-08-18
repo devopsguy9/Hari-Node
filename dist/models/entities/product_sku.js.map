@@ -1,1 +1,0 @@
-{"version":3,"file":"product_sku.js","sourceRoot":"","sources":["../../../server/models/entities/product_sku.ts"],"names":[],"mappings":";;;;;;;;;;;AAAA,mCAAsF;AAItF;IAAA;IAeA,CAAC;IAZG;QADC,gCAAsB,EAAE;;2CACd;IAGX;QADC,gBAAM,EAAE;;mDACU;IAGnB;QADC,gBAAM,EAAE;;+CACM;IAGf;QADC,gBAAM,EAAE;;6CACI;IAZJ,WAAW;QADvB,gBAAM,EAAE;OACI,WAAW,CAevB;IAAD,kBAAC;CAAA,AAfD,IAeC;AAfY,kCAAW"}
