@@ -10,6 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var typeorm_1 = require("typeorm");
+var sub_community_1 = require("./sub_community");
 var community = (function () {
     function community() {
     }
@@ -61,6 +62,13 @@ var community = (function () {
         typeorm_1.Column(),
         __metadata("design:type", Number)
     ], community.prototype, "pincode", void 0);
+    __decorate([
+        typeorm_1.OneToMany(function (type) { return sub_community_1.sub_community; }, function (sub_community) { return sub_community.community_id; }, {
+            cascadeInsert: true,
+            cascadeUpdate: true
+        }),
+        __metadata("design:type", Array)
+    ], community.prototype, "sub_community", void 0);
     community = __decorate([
         typeorm_1.Entity()
     ], community);

@@ -10,6 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var typeorm_1 = require("typeorm");
+var community_1 = require("./community");
 var sub_community = (function () {
     function sub_community() {
     }
@@ -31,6 +32,12 @@ var sub_community = (function () {
         typeorm_1.Column(),
         __metadata("design:type", Boolean)
     ], sub_community.prototype, "active", void 0);
+    __decorate([
+        typeorm_1.ManyToOne(function (type) { return community_1.community; }, function (community) { return community.sub_community; }, {
+            cascadeInsert: true
+        }),
+        __metadata("design:type", community_1.community)
+    ], sub_community.prototype, "community", void 0);
     sub_community = __decorate([
         typeorm_1.Entity()
     ], sub_community);

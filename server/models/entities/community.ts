@@ -1,5 +1,5 @@
-import {Entity, Column, PrimaryGeneratedColumn, ManyToOne, JoinColumn} from "typeorm";
-
+import {Entity, Column, PrimaryGeneratedColumn, ManyToOne, OneToMany, JoinColumn} from "typeorm";
+import {sub_community} from './sub_community';
 
 @Entity()
 export class community {
@@ -42,6 +42,12 @@ export class community {
 
     @Column()
     pincode: number;
+
+    @OneToMany(type=>sub_community,sub_community=>sub_community.community_id,{
+        cascadeInsert:true,
+        cascadeUpdate:true
+    })
+    sub_community:sub_community[];
 
    
 }
