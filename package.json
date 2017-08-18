@@ -30,6 +30,7 @@
     "istanbul": "^0.4.5",
     "mocha": "^3.4.2",
     "mongoose": "4.10.6",
+    "mysql": "^2.14.1",
     "swagger-jsdoc": "1.9.5",
     "swagger-ui-express": "^2.0.1",
     "typeorm": "0.1.0-alpha.34"

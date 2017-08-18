@@ -1,21 +1,15 @@
-import * as express from "express";
-import { json, urlencoded } from "body-parser";
-import * as http from "http";
-import {Connection} from "./models/connection"
-
-
-
-import "reflect-metadata";
-import {createConnection} from "typeorm";
-
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var express = require("express");
+var body_parser_1 = require("body-parser");
+var connection_1 = require("./models/connection");
+require("reflect-metadata");
 process.env.NODE_ENV = "SCM";
-
-const app: express.Application = express();
-app.use(json());
-app.use(urlencoded({
+var app = express();
+app.use(body_parser_1.json());
+app.use(body_parser_1.urlencoded({
     extended: true
 }));
-
 var parsePost = function (req, callback) {
     var data = '';
     req.on('data', function (chunk) {
@@ -27,15 +21,12 @@ var parsePost = function (req, callback) {
         }
         callback(data);
     });
-}
-
-new Connection();
-
+};
+new connection_1.Connection();
 app.all('*', function (req, res, next) {
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Methods', 'GET,POST,PUT,DELETE');
     res.setHeader('Access-Control-Allow-Headers', 'accept, Content-Type, Authorization');
-
     if (req.headers['content-type'] && req.headers['content-type'].indexOf('application/x-www-form-urlencoded') > -1) {
         parsePost(req, function (data) {
             if (data && data != '') {
@@ -43,38 +34,28 @@ app.all('*', function (req, res, next) {
             }
             next();
         });
-    } else {
+    }
+    else {
         next();
     }
-
 });
-
-
-app.get("/", (request: express.Request, response: express.Response) => {
+app.get("/", function (request, response) {
     response.json({
         name: "SCM Micro supply chain management"
-    })
+    });
 });
-
-app.use((err: Error & { status: number }, request: express.Request, response: express.Response, next: express.NextFunction): void => {
-
+app.use(function (err, request, response, next) {
     response.status(err.status || 500);
     response.json({
         error: "Server error"
-    })
+    });
 });
-
-
 var appRestRouter = express.Router();
-import { AppController } from './routes/AppController';
-let appController = new AppController();
+var AppController_1 = require("./routes/AppController");
+var appController = new AppController_1.AppController();
 appController.registerRoutes(appRestRouter);
 app.use('/api', appRestRouter);
-
-const server: http.Server = app.listen(3003);
+var server = app.listen(3003);
+exports.server = server;
 console.log("server is running on port no 3003");
-
-
-
-
-export { server };
+//# sourceMappingURL=app.js.map
