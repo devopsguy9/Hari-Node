@@ -15,7 +15,7 @@ export class user_dwelling {
 
 
     @Column()
-    effective: number;
+    effective: Date;
 
    
 }

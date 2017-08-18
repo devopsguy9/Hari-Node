@@ -8,26 +8,36 @@ export class community {
     id: number;
 
     @Column({
-        length: 500
+        length: 128
     })
     name: string;
 
-    @Column()
+    @Column({
+        length: 255
+    })
     address: string;
 
     @Column()
-    active: string;
+    active: boolean;
 
-    @Column()
+    @Column({
+        length: 128
+    })
     locality: string;
 
-    @Column()
+    @Column({
+        length: 128
+    })
     city: string;
 
-    @Column()
+    @Column({
+        length: 128
+    })
     state: string;
 
-    @Column()
+    @Column({
+        length: 128
+    })
     country: string;
 
     @Column()

@@ -26,7 +26,7 @@ export class delivery_schedule {
     supplier_id: number;
 
     @Column()
-    delivery_date: number;
+    delivery_date: Date;
 
     @Column()
     community_id: number;

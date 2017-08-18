@@ -7,15 +7,15 @@ export class product_category {
     @PrimaryGeneratedColumn()
     id: number;
 
-    @Column({
-        length: 500
-    })
+    @Column()
     consumable_product_id: number;
 
-    @Column()
+    @Column({
+        length:128
+    })
     name: string;
     
     @Column()
-    active: string;
+    active: boolean;
    
 }

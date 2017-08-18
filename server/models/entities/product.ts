@@ -8,15 +8,27 @@ export class product {
     id: number;
 
     @Column({
-        length: 500
+        length: 255
     })
     name: string;
 
-    @Column()
+    @Column({
+        length: 500
+    })
     description: string;
 
+
     @Column()
-    active: number;
+    manufacture_id:number;
+
+    @Column()
+    product_category_id:number;
+
+    @Column()
+    active: boolean;
+
+    @Column()
+    supplier_id: number;
 
    
 }

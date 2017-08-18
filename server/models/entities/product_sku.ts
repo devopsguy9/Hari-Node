@@ -11,10 +11,12 @@ export class product_sku {
     product_id: number;
 
     @Column()
-    active: number;
+    active: boolean;
 
-    @Column()
-    name: number;
+    @Column({
+        length: 255
+    })
+    name: string;
 
    
 }

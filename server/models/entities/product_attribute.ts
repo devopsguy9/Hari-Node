@@ -8,18 +8,22 @@ export class product_attribute {
     id: number;
 
     @Column({
-        length: 500
+        length: 128
     })
     name: string;
 
-    @Column()
+    @Column({
+        length: 255
+    })
     description: string;
 
-    @Column()
+    @Column({
+        length: 80
+    })
     data_type: string;
 
     @Column()
-    active: number;
+    active: boolean;
 
    
 }

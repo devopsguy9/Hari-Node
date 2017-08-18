@@ -8,7 +8,7 @@ export class sub_community {
     id: number;
 
     @Column({
-        length: 500
+        length: 255
     })
     name: string;
 
@@ -16,7 +16,7 @@ export class sub_community {
     community_id: number;
 
     @Column()
-    active: string;
+    active: boolean;
 
    
 }

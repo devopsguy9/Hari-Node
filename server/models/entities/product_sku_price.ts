@@ -14,7 +14,7 @@ export class product_sku_price {
     price: number;
 
     @Column()
-    effective: number;
+    effective: boolean;
 
    
 }

@@ -8,7 +8,7 @@ export class user_billing {
     id: number;
 
     @Column()
-    billed_date: number;
+    billed_date: Date;
 
     @Column()
     user_dwelling: number;

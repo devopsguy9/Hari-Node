@@ -7,16 +7,16 @@ export class product_sku_attribute {
     @PrimaryGeneratedColumn()
     id: number;
 
-    @Column({
-        length: 500
-    })
+    @Column()
     product_sku_id: string;
 
     @Column()
     product_attribute_id: string;
 
-    @Column()
-    attribute_value: number;
+    @Column({
+        length: 80
+    })
+    attribute_value: string;
 
    
 }

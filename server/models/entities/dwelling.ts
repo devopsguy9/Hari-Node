@@ -8,7 +8,7 @@ export class dwelling {
     id: number;
 
     @Column({
-        length: 500
+        length: 128
     })
     name: string;
 

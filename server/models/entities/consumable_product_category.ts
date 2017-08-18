@@ -8,12 +8,12 @@ export class consumable_product_categeory {
     id: number;
 
     @Column({
-        length: 500
+        length: 128
     })
     name: string;
 
     @Column()
-    active: string;
+    active: boolean;
 
  
 }

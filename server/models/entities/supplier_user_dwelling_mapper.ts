@@ -11,14 +11,6 @@ export class supplier_user_dwelling_mapper {
     user_dwelling_id: number;
 
     @Column()
-    community_id: number;
-
-    @Column()
-    dwelling_id: number;
-
-
-    @Column()
-    sub_community_id: number;
-
+    supplier_id: number;
    
 }

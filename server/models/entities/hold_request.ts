@@ -11,13 +11,13 @@ export class hold_request {
     user_dwelling_id: number;
 
     @Column()
-    raised_on: number;
+    raised_on: Date;
 
     @Column()
-    start_date: number;
+    start_date: Date;
 
     @Column()
-    end_date: number;
+    end_date: Date;
 
     @Column()
     supplier_id: number;

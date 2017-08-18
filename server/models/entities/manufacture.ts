@@ -8,15 +8,17 @@ export class manufacture {
     id: number;
 
     @Column({
-        length: 500
+        length: 128
     })
     name: string;
 
     @Column()
-    active: string;
+    active: boolean;
 
-    @Column()
-    comments: number;
+    @Column({
+        length: 255
+    })
+    comments: string;
 
    
 }

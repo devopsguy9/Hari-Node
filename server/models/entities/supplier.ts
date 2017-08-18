@@ -20,9 +20,5 @@ export class supplier {
 
     @Column()
     active: string;
-
-    @Column()
-    consumable_product_id: number;
-
    
 }

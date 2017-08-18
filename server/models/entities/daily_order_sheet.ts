@@ -14,7 +14,7 @@ export class daily_order_sheet {
     product_sku__id: number;
     
     @Column()
-    order_date: string;
+    order_date: Date;
 
     @Column()
     quantity: number;
