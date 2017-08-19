@@ -1,5 +1,5 @@
 import {Entity, Column, PrimaryGeneratedColumn, ManyToOne, JoinColumn} from "typeorm";
-
+import {sub_community} from './sub_community';
 
 @Entity()
 export class dwelling {
@@ -17,6 +17,11 @@ export class dwelling {
 
     @Column()
     active: number;
+   
+    @ManyToOne(type=>sub_community,subcommunity=>subcommunity.dwelling,{
+        cascadeInsert:true
+    })
+    subcommunity:sub_community;
 
    
 }

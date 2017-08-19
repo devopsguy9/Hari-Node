@@ -1,5 +1,5 @@
-import {Entity, Column, PrimaryGeneratedColumn, ManyToOne, JoinColumn} from "typeorm";
-
+import {Entity, Column, PrimaryGeneratedColumn, ManyToOne,OneToMany ,JoinColumn} from "typeorm";
+import {user_dwelling} from './user_dwelling';
 
 @Entity()
 export class users {
@@ -29,6 +29,11 @@ export class users {
         length: 128
     })
     salt: string;
-
+   
+    @OneToMany(type=>user_dwelling,user_id=>user_id.user_id,{
+        cascadeInsert:true,
+        cascadeUpdate:true
+    })
+    user_id:user_dwelling
    
 }
