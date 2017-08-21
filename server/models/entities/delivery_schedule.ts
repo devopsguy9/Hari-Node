@@ -1,5 +1,6 @@
 import {Entity, Column, PrimaryGeneratedColumn, ManyToOne, JoinColumn} from "typeorm";
 import {sub_community} from './sub_community';
+import {user_dwelling} from './user_dwelling';
 
 @Entity()
 export class delivery_schedule {
@@ -36,6 +37,11 @@ export class delivery_schedule {
         cascadeUpdate:true
     })
     sub_community:sub_community;
+
+    @ManyToOne(type=>user_dwelling,user_dwelling=>user_dwelling.delivery_schedule,{
+        cascadeInsert:true
+    })
+    user_dwelling:user_dwelling
 
 
    

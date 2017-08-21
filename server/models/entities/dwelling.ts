@@ -1,5 +1,6 @@
-import {Entity, Column, PrimaryGeneratedColumn, ManyToOne, JoinColumn} from "typeorm";
+import {Entity, Column, PrimaryGeneratedColumn, ManyToOne,ManyToMany ,JoinColumn} from "typeorm";
 import {sub_community} from './sub_community';
+import {user_dwelling} from './user_dwelling';
 
 @Entity()
 export class dwelling {
@@ -23,5 +24,10 @@ export class dwelling {
     })
     subcommunity:sub_community;
 
+    @ManyToMany(type=>user_dwelling,user_dwelling=>user_dwelling.dwelling_id,{
+        cascadeInsert:true,
+        cascadeUpdate:true
+    })
+   user_dwelling:user_dwelling; 
    
 }

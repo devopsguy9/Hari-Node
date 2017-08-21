@@ -1,4 +1,5 @@
 import {Entity, Column, PrimaryGeneratedColumn, ManyToOne, JoinColumn} from "typeorm";
+import {user_dwelling} from './user_dwelling';
 
 
 @Entity()
@@ -21,6 +22,11 @@ export class hold_request {
 
     @Column()
     supplier_id: number;
+
+    @ManyToOne(type=>user_dwelling,user_dwelling=>user_dwelling.hold_request,{
+        cascadeInsert:true
+    })
+    user_dwelling:user_dwelling
 
    
 }
