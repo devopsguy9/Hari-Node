@@ -1,5 +1,5 @@
 import {Entity, Column, PrimaryGeneratedColumn, ManyToOne,OneToMany ,JoinColumn} from "typeorm";
-import {user_dwelling} from './user_dwelling';
+import {user_dwellings} from './user_dwellings';
 
 @Entity()
 export class users {
@@ -30,10 +30,10 @@ export class users {
     })
     salt: string;
    
-    @OneToMany(type=>user_dwelling,user_id=>user_id.user_id,{
+    @OneToMany(type=>user_dwellings,user_id=>user_id.user_id,{
         cascadeInsert:true,
         cascadeUpdate:true
     })
-    user_id:user_dwelling
+    user_id:user_dwellings
    
 }

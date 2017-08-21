@@ -1,15 +1,13 @@
 import {Entity, Column, PrimaryGeneratedColumn, ManyToOne, JoinColumn} from "typeorm";
-import {user_dwelling} from './user_dwelling';
-
+import {user_dwellings} from './user_dwellings';
 
 @Entity()
-export class hold_request {
+export class special_requests {
 
     @PrimaryGeneratedColumn()
     id: number;
 
-    @Column()
-    user_dwelling_id: number;
+   
 
     @Column()
     raised_on: Date;
@@ -23,10 +21,10 @@ export class hold_request {
     @Column()
     supplier_id: number;
 
-    @ManyToOne(type=>user_dwelling,user_dwelling=>user_dwelling.hold_request,{
+    @ManyToOne(type=>user_dwellings,user_dwelling_id=>user_dwelling_id.user_billing,{
         cascadeInsert:true
     })
-    user_dwelling:user_dwelling
+    user_dwelling_id:user_dwellings
 
    
 }

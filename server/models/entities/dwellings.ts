@@ -1,9 +1,9 @@
 import {Entity, Column, PrimaryGeneratedColumn, ManyToOne,ManyToMany ,JoinColumn} from "typeorm";
-import {sub_community} from './sub_community';
-import {user_dwelling} from './user_dwelling';
+import {sub_communities} from './sub_communities';
+import {user_dwellings} from './user_dwellings';
 
 @Entity()
-export class dwelling {
+export class dwellings {
 
     @PrimaryGeneratedColumn()
     id: number;
@@ -19,15 +19,15 @@ export class dwelling {
     @Column()
     active: number;
    
-    @ManyToOne(type=>sub_community,subcommunity=>subcommunity.dwelling,{
+    @ManyToOne(type=>sub_communities,subcommunity=>subcommunity.dwelling,{
         cascadeInsert:true
     })
-    subcommunity:sub_community;
+    subcommunity:sub_communities;
 
-    @ManyToMany(type=>user_dwelling,user_dwelling=>user_dwelling.dwelling_id,{
+    @ManyToMany(type=>user_dwellings,user_dwelling=>user_dwelling.dwelling_id,{
         cascadeInsert:true,
         cascadeUpdate:true
     })
-   user_dwelling:user_dwelling; 
+   user_dwelling:user_dwellings; 
    
 }
