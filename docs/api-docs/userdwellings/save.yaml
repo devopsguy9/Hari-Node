@@ -1,0 +1,29 @@
+/userDwelling/addUserDwelling:
+    put:
+        tags:
+            - User Dwellings
+        description:
+             Create User dwellings
+        parameters:
+          - name: body
+            in: body
+            schema:
+                type: object
+                properties:
+                    data:
+                        type: object
+                        properties:
+                            user_id:
+                                type: int
+                                example: 1
+                            dwelling_id:
+                                type: string
+                                example: 1
+                            effective:
+                                type: date
+                                example: "23-1-7017 08:12:22"
+                            
+                            
+        responses:
+            200:
+                description: "status:1 is success; status: 0 is failure;"
