@@ -1,0 +1,53 @@
+/community/updateCommunity/{id}:
+  put:
+    tags:
+      - Communities
+    description:
+        Update a community
+    parameters:
+      - name: id
+        in: path
+        required: true
+        type: number
+      - name: body
+        in: body
+        schema:
+            type: object
+            properties:
+                data:
+                    type: object
+                    properties:
+                         name:
+                                type: string
+                                example: "Ramki"
+                         address:
+                                type: string
+                                example: "street no 4, Lanco hills"
+                         active:
+                                type: boolean
+                                example: true
+                         locality:
+                                type: string
+                                example: "Gachibowli"
+                         city:
+                                type: string
+                                example: "hyderabad"
+                         state:
+                                type: string
+                                example: "Telangana"
+                         country:
+                                type: string
+                                example : "India"  
+                         pincode :
+                                type: int
+                                example : 500061          
+                        
+
+
+
+
+
+
+    responses:
+        200:
+            description: "status:1 is success; status: 0 is failure;"
