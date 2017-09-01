@@ -1,12 +1,44 @@
+import "reflect-metadata";
+
 import * as express from "express";
+//import{createConnection,ConnectionOptions} from "typeorm";
+//import { user } from "./models/entites/user";
+import { APIDocs } from './swagger/ApiDocs';
+
 import { json, urlencoded } from "body-parser";
 import * as http from "http";
 
-import "reflect-metadata";
+
+import {ormConfig} from "./config/ormConfig";
+
 
 //process.env.NODE_ENV = "testing";
 
 const app: express.Application = express();
+
+//new ormConfig();
+/*createConnection({
+    driver: {
+        type: "mysql",
+        host: "localhost",
+        port: 3306,
+        username: "root",
+        password: "root",
+        database: "milkman"
+    },
+    entities: [
+        user
+    ],
+    autoSchemaSync: true
+}).then(connection => {
+
+if(connection){
+    console.log("connected");
+}
+});
+     */   
+
+
 app.use(json());
 
 var parsePost = function (req:any, callback:any) {
@@ -21,6 +53,7 @@ var parsePost = function (req:any, callback:any) {
         callback(data);
     });
 }
+
 
 
 app.all('*', function (req, res, next) {
@@ -41,9 +74,11 @@ app.all('*', function (req, res, next) {
 
 });
 
+
+
 app.get("/", (request: express.Request, response: express.Response) => {
     response.json({
-        name: "MilkMan stated guys be ready"
+        name: "MilkMan On Boarded.. :|"
     })
 });
 
@@ -56,12 +91,23 @@ app.use((err:Error & {status:number},request:express.Request,response:express.Re
 
 var appRestRouter = express.Router();
 import { AppController } from './routes/AppController';
-let appController = new AppController();
-appController.registerRoutes(appRestRouter);
-app.use('/api',appRestRouter)
 
-const server : http.Server = app.listen(3000);
+import { createConnection } from "typeorm";
+createConnection().then(async connection => {
 
-console.log("Hello server you are at port 3000");
 
-export { server };
+    let appController = new AppController();
+    app.use('/api', appController.getRouter());
+
+
+    let apiDocs = new APIDocs();
+    app.use('/swagger', apiDocs.getRouter());
+
+    app.listen(3000);
+    console.log("Listen port: 3000");
+}).catch(error => console.log("TypeORM connection error: ", error));
+
+process.on('uncaughtException', function(err) {
+    console.log('Caught exception: ' + err);
+});
+//export { server };
