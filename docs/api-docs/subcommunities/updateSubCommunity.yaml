@@ -1,0 +1,38 @@
+/subCommunity/updateSubCommunity/{id}:
+  put:
+    tags:
+      - Sub Communities
+    description:
+        Update a sub community
+    parameters:
+      - name: id
+        in: path
+        required: true
+        type: number
+      - name: body
+        in: body
+        schema:
+            type: object
+            properties:
+                data:
+                    type: object
+                    properties:
+                        name:
+                                type: string
+                                example: "Ramki-tower1"
+                        community_id:
+                                type: int
+                                example: 1
+                        active:
+                                type: boolean
+                                example: true
+                        
+
+
+
+
+
+
+    responses:
+        200:
+            description: "status:1 is success; status: 0 is failure;"

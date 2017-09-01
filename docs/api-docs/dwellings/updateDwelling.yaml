@@ -1,0 +1,39 @@
+/dwelling/updateDwelling/{id}:
+  put:
+    tags:
+      - Dwellings
+    description:
+        Update a Dwellings
+    parameters:
+      - name: id
+        in: path
+        required: true
+        type: number
+      - name: body
+        in: body
+        schema:
+            type: object
+            properties:
+                data:
+                    type: object
+                    properties:
+                            name:
+                                type: string
+                                example: "c4567"
+                            active:
+                                type: boolean
+                                example: true
+                            sub_community_id:
+                                type: int
+                                example: 1
+                                  
+                        
+
+
+
+
+
+
+    responses:
+        200:
+            description: "status:1 is success; status: 0 is failure;"
