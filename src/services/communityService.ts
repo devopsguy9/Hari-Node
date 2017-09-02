@@ -14,7 +14,7 @@ export class CommunityService {
         
     }
     
-    async saveCommunity(item: communities) {
+    async saveUser(item: communities) {
         try {
         
                 console.log("In community service");

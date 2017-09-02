@@ -2,7 +2,7 @@
 
 
 import { DwellingDAO } from '../daos/dwellingDAO';
-import { dwellings } from "../models/entities/dwellings";
+import { Dwellings } from "../models/entities/dwellings";
 
 
 export class DwellingService {
@@ -13,7 +13,7 @@ export class DwellingService {
         
     }
     
-    async saveDwelling(item: dwellings) {
+    async saveDwelling(item: Dwellings) {
         try {
         
                 console.log("In dwelling service");
@@ -62,12 +62,12 @@ export class DwellingService {
        }
    }
 
-/*
+
 
   async deleteUserById(item:any){
       try{
            console.log("In get deleteUserById id method");
-           let userData = await this.userDAO.delete({id : item});
+           let userData = await this.dwellingDAO.delete({id : item});
            let message="User has been deleted";
            if(userData==undefined)
            message="User Not found";
@@ -83,14 +83,14 @@ export class DwellingService {
        }
   }
 
-*/
-  async getDwellings(){
+
+  async getUsers(){
       try{
-          console.log("In get all dwellings");
-          let dwellingsData = await this.dwellingDAO.findAll();
+          console.log("In get all users");
+          let usersData = await this.dwellingDAO.findAll();
           let returnData = {
-              data : dwellingsData,
-              message: dwellingsData.length
+              data : usersData,
+              message: usersData.length
           }
           return Promise.resolve(returnData);
       }
@@ -101,26 +101,25 @@ export class DwellingService {
 
 }
 
- async updateDwelling(id: any, item :dwellings){
+async updateUser(id: any, item :Dwellings){
     try{
     
     
-        let dwellingToUpdate :any = await this.dwellingDAO.findOneById(id);
-        if(dwellingToUpdate != undefined){
-            dwellingToUpdate.name= item.name;
-            dwellingToUpdate.email= item.sub_community_id;
-            dwellingToUpdate.active = item.active;
-            
+        let userToUpdate :any = await this.dwellingDAO.findOneById(id);
+        if(userToUpdate != undefined){
+            userToUpdate.name= item.name;
+            userToUpdate.sub_community_id= item.sub_community_id;
+            userToUpdate.active = item.active;
 
-            let updateDwelling = await this.dwellingDAO.save(dwellingToUpdate);
+            let updateUser = await this.dwellingDAO.save(userToUpdate);
             let returnData = { 
-                data: updateDwelling,
-                message:"Dwelling record has been updated"
+                data: updateUser,
+                message:"User record has been updated"
             }
             return Promise.resolve(returnData);
         } else{
             let returnData = {
-                message : "Dwelling record not found"
+                message : "User record not found"
             }
             return Promise.resolve(returnData);
         }   

@@ -1,1 +1,1 @@
-Milk Man SCM Dev Repository -- Hari Prasad
+Milk Man SCM Dev Repository

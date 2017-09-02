@@ -34,26 +34,26 @@ export class DwellingController{
 
        this.router.get('/getAllDwellings',async(request: Request,response:Response)=>{
             console.log("in getAllDwellings"); 
-           const dwelling_service = new DwellingService();
-           let result = dwelling_service.getDwellings();
-            App.Send(request,response,result);
+           const user_service = new DwellingService();
+           let result = user_service.getUsers();
+           App.Send(request,response,result);
 
         })
 
-          this.router.put('/updateDwelling/:id',async(request: Request,response:Response)=>{
-            console.log("in updateDwelling"); 
-            let dwelling_id =  request.params.id;
-            console.log(dwelling_id)
-            let reqObj = request.body.data;
+           this.router.post('/updateDwelling/:id',async(request: Request,response:Response)=>{
+            console.log("in updateUser"); 
+            let user_id =  request.params.id;
+            console.log(user_id)
+            let reqObj = request.body;
             console.log(reqObj)
-           const dwelling_service = new DwellingService();
-            let result = dwelling_service.updateDwelling(dwelling_id,reqObj);
+           const user_service = new DwellingService();
+            let result = user_service.updateUser(user_id,reqObj);
             App.Send(request,response,result);
 
         })
+/*
 
-
-      /*  this.router.get('/deleteUser/:id',async(request: Request,response:Response)=>{
+        this.router.get('/deleteUser/:id',async(request: Request,response:Response)=>{
             console.log("in deleteUser");
             let userItem = request.params.id;
             console.log(userItem);

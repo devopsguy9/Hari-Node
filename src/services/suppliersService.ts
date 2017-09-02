@@ -1,13 +1,13 @@
 import { App } from "./../utils/App";
-import { suppliers } from "./../models/entities/suppliers";
-import { suppliersDAO } from "./../daos/suppliersDAO";
+import { Suppliers } from "./../models/entities/suppliers";
+import { SuppliersDAO } from "./../daos/suppliersDAO";
 
-export class suppliersService {
-    private suppliersDao: suppliersDAO;
+export class SuppliersService {
+    private suppliersDao: SuppliersDAO;
 
 
     constructor() {
-        this.suppliersDao = new suppliersDAO();
+        this.suppliersDao = new SuppliersDAO();
 
     }
 
@@ -29,7 +29,7 @@ export class suppliersService {
         }
     }
 
-    async save(item: suppliers) {
+    async save(item: Suppliers) {
         try {
             if (this.validate(item)) {
                 let suppliersData: any = await this.suppliersDao.save(item);
@@ -52,7 +52,7 @@ export class suppliersService {
 
     async delete(id: any) {
         try {
-            let data: suppliers = (await this.suppliersDao.entity(id))
+            let data: Suppliers = (await this.suppliersDao.entity(id))
             let result: any = await this.suppliersDao.delete(data);
             let returnData = {
                 id: id,
@@ -64,7 +64,7 @@ export class suppliersService {
         }
     }
 
-    async validate(item: suppliers) {
+    async validate(item: Suppliers) {
         return true;
     }
 }

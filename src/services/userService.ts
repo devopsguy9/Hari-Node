@@ -1,24 +1,23 @@
 
 
 
-import { usersDAO } from '../daos/usersDAO';
-import { users } from "../models/entities/users";
+import { UsersDAO } from '../daos/usersDAO';
+import { Users } from "../models/entities/users";
 
 
-export class UserService {
-    private usersDAO: usersDAO;
+export class UsersService {
+    private userDAO: UsersDAO;
     
     constructor() {
-        this.usersDAO = new usersDAO();
+        this.userDAO = new UsersDAO();
         
     }
     
-    async saveUser(item: users) {
+    async saveUser(item: Users) {
         try {
         
                 console.log("In user service");
-                console.log(item)
-                let data = await this.usersDAO.search({ phone: item.phone });
+                let data = await this.userDAO.search({ phone: item.phone });
                 if(data.length>0){
                         let returnData={
                             "message" : "User already exists",
@@ -26,7 +25,7 @@ export class UserService {
                         }
                       return Promise.resolve(returnData);  
                             }else{
-                        let addData = await this.usersDAO.save(item);
+                        let addData = await this.userDAO.save(item);
                         let returnData ={
                                 "message": "User has been saved successfully",
                                 "data" : addData
@@ -45,7 +44,7 @@ export class UserService {
    async getUserById(item: any){
        try{
            console.log("In get Userby id method");
-           let userData = await this.usersDAO.findRecord({id : item});
+           let userData = await this.userDAO.findRecord({id : item});
            let message="User found";
            if(userData==undefined)
            message="User Not found";
@@ -68,7 +67,7 @@ export class UserService {
   async deleteUserById(item:any){
       try{
            console.log("In get deleteUserById id method");
-           let userData = await this.usersDAO.delete({id : item});
+           let userData = await this.userDAO.delete({id : item});
            let message="User has been deleted";
            if(userData==undefined)
            message="User Not found";
@@ -88,7 +87,7 @@ export class UserService {
   async getUsers(){
       try{
           console.log("In get all users");
-          let usersData = await this.usersDAO.findAll();
+          let usersData = await this.userDAO.findAll();
           let returnData = {
               data : usersData,
               message: usersData.length
@@ -102,11 +101,11 @@ export class UserService {
 
 }
 
-async updateUser(id: any, item :users){
+async updateUser(id: any, item :Users){
     try{
     
     
-        let userToUpdate :any = await this.usersDAO.findOneById(id);
+        let userToUpdate :any = await this.userDAO.findOneById(id);
         if(userToUpdate != undefined){
             userToUpdate.name= item.name;
             userToUpdate.email= item.email;
@@ -114,7 +113,7 @@ async updateUser(id: any, item :users){
             userToUpdate.password= item.password;
             userToUpdate.salt= item.salt;
 
-            let updateUser = await this.usersDAO.save(userToUpdate);
+            let updateUser = await this.userDAO.save(userToUpdate);
             let returnData = { 
                 data: updateUser,
                 message:"User record has been updated"

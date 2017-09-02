@@ -1,8 +1,8 @@
 import {Entity,Column,PrimaryGeneratedColumn,OneToOne,JoinColumn} from 'typeorm';
-import {user_Dwellings} from './user_Dwellings';
+import {UserDwellings} from './userDwellings';
 
 @Entity("users")
-export class users{
+export class Users{
     @PrimaryGeneratedColumn({name:"id"})
     id:number;
 

@@ -1,5 +1,5 @@
 import {createConnection} from "typeorm";   
-import {ormConfig} from "./ormConfig";
+import {OrmConfig} from "./ormConfig";
 
 class DataAccess {
     constructor () {

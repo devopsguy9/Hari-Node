@@ -1,11 +1,11 @@
 import { Router, Request, Response } from "express";
 import { App } from "../../utils/App";
-import { suppliersService } from "../../services/suppliersService";
+import { SuppliersService } from "../../services/suppliersService";
 
-export class suppliersController {
+export class SuppliersController {
     
         private router: Router = Router();
-        private suppliersService = new suppliersService();
+        private suppliersService = new SuppliersService();
 
         getRouter():Router{
     

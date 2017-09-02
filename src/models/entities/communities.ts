@@ -1,6 +1,6 @@
 import {Entity,Column,PrimaryGeneratedColumn,OneToMany,ManyToOne} from 'typeorm';
-import {sub_Communities} from './sub_Communities';
-import {users} from './users'
+import {SubCommunities} from './subCommunities';
+import {Users} from './users'
 
 @Entity("communites")
 export class communities{

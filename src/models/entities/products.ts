@@ -1,9 +1,9 @@
-import { manufacturers } from './manufacturers';
+import { Manufacturers } from './manufacturers';
 import {Entity,Column,PrimaryGeneratedColumn,OneToMany,ManyToOne,JoinColumn} from 'typeorm';
 
 
 @Entity("products")
-export class products{
+export class Products{
     @PrimaryGeneratedColumn({name:"id"})
     id:number;
 
@@ -19,9 +19,9 @@ export class products{
     })
     description:string;
 
-    @JoinColumn({name:"manufacture_id"})
-    @ManyToOne(type=>manufacturers)
-    manufactures_id:number;
+    @JoinColumn({name:"manufacturers_id"})
+    @ManyToOne(type=>Manufacturers)
+    manufacturers_id:number;
 
     @Column({name:"product_category_id"})
     product_category_id:number;

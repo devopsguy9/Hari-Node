@@ -1,12 +1,12 @@
 import "reflect-metadata";
 
 import{createConnection,ConnectionOptions} from "typeorm";
-import { users } from "../models/entities/users";
+import { Users } from "../models/entities/users";
 import {communities} from "../models/entities/communities";
-import {sub_Communities} from "../models/entities/sub_Communities";
+import {SubCommunities} from "../models/entities/subCommunities";
 
 
-export class  ormConfig{
+export class  OrmConfig{
  
     public connectionOptions: ConnectionOptions = {
     driver: {
@@ -17,8 +17,8 @@ export class  ormConfig{
         password: "digitallync",
         database: "phase1"
     },
-    entities: [users,communities,sub_Communities],
-    autoSchemaSync: true
+    entities: [Users,communities,SubCommunities],
+    autoSchemaSync: false
 };
     
     constructor(){

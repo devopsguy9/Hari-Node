@@ -1,13 +1,13 @@
 import { App } from "./../utils/App";
-import { products } from "./../models/entities/products";
-import { productsDAO } from "./../daos/productsDAO";
+import { Products } from "./../models/entities/products";
+import { ProductsDAO } from "./../daos/productsDAO";
 
-export class productsService {
-    private productsDao: productsDAO;
+export class ProductsService {
+    private productsDao: ProductsDAO;
 
 
     constructor() {
-        this.productsDao = new productsDAO();
+        this.productsDao = new ProductsDAO();
 
     }
 
@@ -29,7 +29,7 @@ export class productsService {
         }
     }
 
-    async save(item: products) {
+    async save(item: Products) {
         try {
             if (this.validate(item)) {
                 let user_billingsData: any = await this.productsDao.save(item);
@@ -52,7 +52,7 @@ export class productsService {
 
     async delete(id: any) {
         try {
-            let data: products = (await this.productsDao.findOneById(id))
+            let data: Products = (await this.productsDao.findOneById(id))
             let result: any = await this.productsDao.delete(data);
             let returnData = {
                 id: id,
@@ -64,7 +64,7 @@ export class productsService {
         }
     }
 
-    async validate(item: products) {
+    async validate(item: Products) {
         return true;
     }
 }

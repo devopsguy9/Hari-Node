@@ -1,14 +1,14 @@
 import { getEntityManager, Repository } from "typeorm";
-import { users } from "../models/entities/users";
+import { Users } from "../models/entities/users";
 import{BaseDAO} from "../config/baseDAO";
 
-export class usersDAO extends BaseDAO<users>{
+export class UsersDAO extends BaseDAO<Users>{
     
-private rep: Repository<users>;
+private rep: Repository<Users>;
 
     constructor() {
-    super(users);
-        this.rep = getEntityManager().getRepository(users);
+    super(Users);
+        this.rep = getEntityManager().getRepository(Users);
     }
     
     
@@ -28,5 +28,5 @@ private rep: Repository<users>;
     
     
 
-Object.seal(usersDAO);
+Object.seal(UsersDAO);
 

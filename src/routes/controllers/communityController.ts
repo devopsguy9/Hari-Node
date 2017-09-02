@@ -13,11 +13,11 @@ export class CommunityController{
 
       
         this.router.put('/addCommunity',async(request: Request,response:Response)=>{
-            console.log("in add community");
+            console.log("in add user");
             let communityItem = request.body.data;
             console.log(communityItem);
             const community_service = new CommunityService();
-            let result = community_service.saveCommunity(communityItem);
+            let result = community_service.saveUser(communityItem);
             App.Send(request,response,result);
 
         })

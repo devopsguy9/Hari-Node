@@ -8,7 +8,7 @@ export class SubCommunityController{
     getRouter():Router{
         this.router.get('/', async(request: Request,response: Response)=>{
             console.log("hello");
-          //  App.Send(request,response,);
+            //App.Send(request,response,);
         })
 
       
@@ -44,7 +44,7 @@ export class SubCommunityController{
             console.log("in updateSubCommunity"); 
             let sub_community_id =  request.params.id;
             console.log(sub_community_id)
-            let reqObj = request.body.data;
+            let reqObj = request.body;
             console.log(reqObj)
            const sub_community_service = new SubCommunityService();
             let result = sub_community_service.updateSubCommunity(sub_community_id,reqObj);

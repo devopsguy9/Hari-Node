@@ -1,11 +1,11 @@
 import { Router,Request,Response } from "express";
 import { App } from '../../utils/App';
-import { productsService } from '../../services/ProductsService';
+import { ProductsService } from '../../services/ProductsService';
 
-export class productsController {
+export class ProductsController {
     
         private router: Router = Router();
-        private ProductsService = new productsService();
+        private ProductsService = new ProductsService();
 
         getRouter():Router{
     

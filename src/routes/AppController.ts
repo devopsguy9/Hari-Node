@@ -2,19 +2,19 @@
 import {Router} from "express";
 //import {AttendanceController} from './controllers/AttendanceController';
 import {CommunityController} from './controllers/communityController';
-import {regular_ConsumptionsController} from './controllers/regular_ConsumptionsController';
-import {hold_RequestsController} from './controllers/hold_RequestsController'; 
-import {special_RequestsController} from './controllers/special_RequestsController'; 
-import {special_Request_DetailsController} from './controllers/special_Request_DetailsController'; 
-import {daily_Order_SheetsController} from './controllers/daily_Order_SheetsController'; 
-import {delivery_SchedulesController} from './controllers/delivery_SchedulesController'; 
-import {user_BillingsController} from './controllers/user_BillingsController';  
-import {suppliersController} from './controllers/suppliersController'; 
-import {supplier_User_Dwelling_MappersController} from './controllers/supplier_User_Dwelling_MappersController';   
-import {UserController} from './controllers/userController'; 
+import {RegularConsumptionsController} from './controllers/regularConsumptionsController';
+import {HoldRequestsController} from './controllers/holdRequestsController'; 
+import {SpecialRequestsController} from './controllers/specialRequestsController'; 
+import {SpecialRequestDetailsController} from './controllers/specialRequestDetailsController'; 
+import {DailyOrderSheetsController} from './controllers/dailyOrderSheetsController'; 
+import {DeliverySchedulesController} from './controllers/deliverySchedulesController'; 
+import {UserBillingsController} from './controllers/userBillingsController';  
+import {SuppliersController} from './controllers/suppliersController'; 
+import {SupplierUserDwellingMappersController} from './controllers/supplierUserDwellingMappersController';   
+import {UsersController} from './controllers/usersController'; 
 import {DwellingController} from './controllers/dwellingController'; 
-import {SubCommunityController} from './controllers/SubCommunityController'; 
-import {productsController} from './controllers/productsController'; 
+import {SubCommunityController} from './controllers/subCommunityController'; 
+import {ProductsController} from './controllers/productsController'; 
 
 export class AppController{
     private router : Router = Router();
@@ -24,23 +24,23 @@ export class AppController{
 
         //this.router.use('/communities',new communitiesController().getRouter());
 
-        this.router.use('/regular',new regular_ConsumptionsController().getRouter());
+        this.router.use('/regular',new RegularConsumptionsController().getRouter());
 
-        this.router.use('/hold',new hold_RequestsController().getRouter());
+        this.router.use('/hold',new HoldRequestsController().getRouter());
 
-        this.router.use('/special',new special_RequestsController().getRouter());
+        this.router.use('/special',new SpecialRequestsController().getRouter());
 
-        this.router.use('/special_request_details',new special_Request_DetailsController().getRouter());
+        this.router.use('/special_request_details',new SpecialRequestDetailsController().getRouter());
 
-        this.router.use('/daily',new daily_Order_SheetsController().getRouter());
+        this.router.use('/daily',new DailyOrderSheetsController().getRouter());
         
-        this.router.use('/delivery',new delivery_SchedulesController().getRouter());
+        this.router.use('/delivery',new DeliverySchedulesController().getRouter());
         
-        this.router.use('/billing',new user_BillingsController().getRouter());
+        this.router.use('/billing',new UserBillingsController().getRouter());
 
-        this.router.use('/supplier',new suppliersController().getRouter());
+        this.router.use('/supplier',new SuppliersController().getRouter());
 
-        this.router.use('/user',new UserController().getRouter());
+        this.router.use('/user',new UsersController().getRouter());
 
         this.router.use('/community',new CommunityController().getRouter());
         
@@ -48,7 +48,7 @@ export class AppController{
 
          this.router.use('/subcommunity',new SubCommunityController().getRouter());
 
-        this.router.use('/products',new productsController().getRouter());
+        this.router.use('/products',new ProductsController().getRouter());
         
         return this.router;
     }

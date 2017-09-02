@@ -1,8 +1,5 @@
-
-
-
 import { SubCommunityDAO } from '../daos/subCommunityDAO';
-import { sub_Communities } from "../models/entities/sub_communities";
+import { SubCommunities } from "../models/entities/subCommunities";
 
 
 export class SubCommunityService {
@@ -13,7 +10,7 @@ export class SubCommunityService {
         
     }
     
-    async saveSubCommunity(item: sub_Communities) {
+    async saveSubCommunity(item: SubCommunities) {
         try {
         
                 console.log("In sub community service");
@@ -81,7 +78,7 @@ export class SubCommunityService {
 
 }
 
-async updateSubCommunity(id: any, item :sub_Communities){
+async updateSubCommunity(id: any, item :SubCommunities){
     try{
     
     

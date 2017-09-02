@@ -3,13 +3,12 @@ import "reflect-metadata";
 import * as express from "express";
 //import{createConnection,ConnectionOptions} from "typeorm";
 //import { user } from "./models/entites/user";
-import { APIDocs } from './swagger/ApiDocs';
 
 import { json, urlencoded } from "body-parser";
 import * as http from "http";
 
 
-import {ormConfig} from "./config/ormConfig";
+import {OrmConfig} from "./config/ormConfig";
 
 
 //process.env.NODE_ENV = "testing";
@@ -92,6 +91,9 @@ app.use((err:Error & {status:number},request:express.Request,response:express.Re
 var appRestRouter = express.Router();
 import { AppController } from './routes/AppController';
 
+var appRestRouter = express.Router();
+import { APIDocs } from './swagger/ApiDocs';
+
 import { createConnection } from "typeorm";
 createConnection().then(async connection => {
 
@@ -100,8 +102,8 @@ createConnection().then(async connection => {
     app.use('/api', appController.getRouter());
 
 
-    let apiDocs = new APIDocs();
-    app.use('/swagger', apiDocs.getRouter());
+     let apiDocs = new APIDocs();
+     app.use('/swagger', apiDocs.getRouter());
 
     app.listen(3000);
     console.log("Listen port: 3000");
