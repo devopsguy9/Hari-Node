@@ -1,6 +1,6 @@
 import { Router,Request,Response } from "express";
 import { App } from '../../utils/App';
-import { ProductsService } from '../../services/ProductsService';
+import { ProductsService } from '../../services/productsService';
 
 export class ProductsController {
     
