@@ -1,6 +1,6 @@
 import { Router, Request, Response } from "express";
 import { App } from "../../utils/App";
-import { HoldRequestsService } from "../../services/HoldRequestsService";
+import { HoldRequestsService } from "../../services/holdRequestsService";
 
 export class HoldRequestsController {
     
