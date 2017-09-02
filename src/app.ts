@@ -6,6 +6,7 @@ import * as express from "express";
 
 import { json, urlencoded } from "body-parser";
 import * as http from "http";
+import * as ejs from "ejs";
 
 
 import {OrmConfig} from "./config/ormConfig";
