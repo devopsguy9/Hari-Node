@@ -1,8 +1,10 @@
+import { ProductCategory } from './productCategories';
 import {Entity,Column,PrimaryGeneratedColumn,OneToMany,ManyToOne} from 'typeorm';
+import {Product} from './products';
 
 
 @Entity("consumable_product_categories")
-export class ConsumableProductCategories{
+export class ConsumableProductCategory{
     @PrimaryGeneratedColumn({name:"id"})
     id:number;
 
@@ -14,5 +16,11 @@ export class ConsumableProductCategories{
 
     @Column({name:"active"})
     active:boolean;
+
+    @OneToMany(type=>ProductCategory,product_categories=>product_categories.consumable_product_categories,{
+        cascadeInsert:true,
+        cascadeUpdate:true
+    })
+    products:Product[];
 
 }

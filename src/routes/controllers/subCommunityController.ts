@@ -32,7 +32,7 @@ export class SubCommunityController{
 
         })
 
-          this.router.get('/getAllSubCommunities',async(request: Request,response:Response)=>{
+          this.router.post('/getAllSubCommunities',async(request: Request,response:Response)=>{
             console.log("in getAllSubCommunities"); 
            const sub_community_service = new SubCommunityService();
             let result = sub_community_service.getAllSubCommunities();

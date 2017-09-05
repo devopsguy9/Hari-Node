@@ -32,7 +32,7 @@ export class CommunityController{
 
         })
 
-        this.router.get('/getAllCommunities',async(request: Request,response:Response)=>{
+        this.router.post('/getAllCommunities',async(request: Request,response:Response)=>{
             console.log("in getAllCommunities"); 
            const community_service = new CommunityService();
             let result = community_service.getCommunities();

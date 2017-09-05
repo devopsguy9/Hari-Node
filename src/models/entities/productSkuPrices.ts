@@ -2,7 +2,7 @@ import {Entity,Column,PrimaryGeneratedColumn,OneToMany,ManyToOne} from 'typeorm'
 
 
 @Entity("product_sku_prices")
-export class ProductSkuPrices{
+export class ProductSkuPrice{
     @PrimaryGeneratedColumn({name:"id"})
     id:number;
 
@@ -13,6 +13,6 @@ export class ProductSkuPrices{
     price:number;
 
     @Column({name:"effective"})
-    effective:boolean;
+    effective:Date;
 
 }

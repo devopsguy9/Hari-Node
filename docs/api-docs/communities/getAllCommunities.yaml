@@ -1,5 +1,5 @@
 /community/getAllCommunities:
-    get:
+    post:
         tags:
             - Communities
         description:

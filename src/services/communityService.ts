@@ -3,7 +3,7 @@
 
 
 import { CommunityDAO } from '../daos/communityDAO';
-import { communities } from "../models/entities/communities";
+import { Community } from "../models/entities/communities";
 
 
 export class CommunityService {
@@ -14,7 +14,7 @@ export class CommunityService {
         
     }
     
-    async saveUser(item: communities) {
+    async saveUser(item: Community) {
         try {
         
                 console.log("In community service");
@@ -100,7 +100,7 @@ export class CommunityService {
 
 }
 
-  async updateCommunity(id: any, item :communities){
+  async updateCommunity(id: any, item :Community){
     try{
     
     

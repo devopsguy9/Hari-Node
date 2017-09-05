@@ -1,18 +1,18 @@
-import { ProductSkues } from './productSkues';
+import { ProductSku } from './productSkus';
 import { Column, Entity, JoinColumn, JoinTable, ManyToMany, PrimaryGeneratedColumn } from 'typeorm';
 
 
 @Entity("regular_consumptions")
-export class RegularConsumptions{
+export class RegularConsumption{
     @PrimaryGeneratedColumn({name:"id"})
     id:number;
 
     @Column({name:"user_dwelling_id"})
     user_dwelling_id:number;
 
-    @JoinTable({name:"product_sku_id"})
-    @ManyToMany(type=>ProductSkues)
-    product_sku_id:number;
+    @JoinTable({name:"product_skus"})
+    @ManyToMany(type=>ProductSku)
+    product_skus:ProductSku;
 
     @Column({name:"quantity"})
     quantity:number;

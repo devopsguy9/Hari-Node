@@ -1,20 +1,20 @@
 import { getEntityManager, Repository } from "typeorm";
-import {DeliverySchedules} from "./../models/entities/deliverySchedules";
+import {DeliverySchedule} from "./../models/entities/deliverySchedules";
 
 
 export class DeliverySchedulesDAO {
 
-    private dao: Repository<DeliverySchedules>;
+    private dao: Repository<DeliverySchedule>;
 
     constructor() {
-        this.dao = getEntityManager().getRepository(DeliverySchedules);
+        this.dao = getEntityManager().getRepository(DeliverySchedule);
     }
 
     search(data: any) {
         return this.dao.find(data)
     }
 
-    save(data: DeliverySchedules) {
+    save(data: DeliverySchedule) {
         return this.dao.persist(data);
     }
 
@@ -22,7 +22,7 @@ export class DeliverySchedulesDAO {
         return this.dao.findOneById(id)
     }
 
-    delete(data: DeliverySchedules) {
+    delete(data: DeliverySchedule) {
         return this.dao.remove([data]);
     }
 

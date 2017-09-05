@@ -1,5 +1,5 @@
 import { App } from "./../utils/App";
-import { UserBillings } from "./../models/entities/userBillings";
+import { UserBilling } from "./../models/entities/userBillings";
 import { UserBillingsDAO } from "./../daos/userBillingsDAO";
 
 export class UserBillingsService {
@@ -29,7 +29,7 @@ export class UserBillingsService {
         }
     }
 
-    async save(item: UserBillings) {
+    async save(item: UserBilling) {
         try {
             if (this.validate(item)) {
                 let user_billingsData: any = await this.user_BillingsDao.save(item);
@@ -52,7 +52,7 @@ export class UserBillingsService {
 
     async delete(id: any) {
         try {
-            let data: UserBillings = (await this.user_BillingsDao.entity(id))
+            let data: UserBilling = (await this.user_BillingsDao.entity(id))
             let result: any = await this.user_BillingsDao.delete(data);
             let returnData = {
                 id: id,
@@ -64,7 +64,7 @@ export class UserBillingsService {
         }
     }
 
-    async validate(item: UserBillings) {
+    async validate(item: UserBilling) {
         return true;
     }
 }

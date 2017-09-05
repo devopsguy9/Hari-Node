@@ -32,7 +32,7 @@ export class UsersController{
 
         })
 
-          this.router.get('/getAllUsers',async(request: Request,response:Response)=>{
+          this.router.post('/getAllUsers',async(request: Request,response:Response)=>{
             console.log("in getAllUsers"); 
            const user_service = new UsersService();
             let result = user_service.getUsers();

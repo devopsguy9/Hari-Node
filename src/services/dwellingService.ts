@@ -2,7 +2,7 @@
 
 
 import { DwellingDAO } from '../daos/dwellingDAO';
-import { Dwellings } from "../models/entities/dwellings";
+import { Dwelling } from "../models/entities/dwellings";
 
 
 export class DwellingService {
@@ -13,7 +13,7 @@ export class DwellingService {
         
     }
     
-    async saveDwelling(item: Dwellings) {
+    async saveDwelling(item: Dwelling) {
         try {
         
                 console.log("In dwelling service");
@@ -101,14 +101,14 @@ export class DwellingService {
 
 }
 
-async updateUser(id: any, item :Dwellings){
+async updateUser(id: any, item :Dwelling){
     try{
     
     
         let userToUpdate :any = await this.dwellingDAO.findOneById(id);
         if(userToUpdate != undefined){
             userToUpdate.name= item.name;
-            userToUpdate.sub_community_id= item.sub_community_id;
+            userToUpdate.sub_community_id= item.sub_communities;
             userToUpdate.active = item.active;
 
             let updateUser = await this.dwellingDAO.save(userToUpdate);

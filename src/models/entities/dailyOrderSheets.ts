@@ -1,21 +1,21 @@
-import { Suppliers } from './suppliers';
-import { ProductSkues } from './productSkues';
-import { Manufacturers } from './manufacturers';
+import { Supplier } from './suppliers';
+import { ProductSku } from './productSkus';
+import { Manufacturer } from './manufacturers';
 import { Column, Entity, JoinColumn, JoinTable, ManyToMany, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
 
 @Entity("daily_order_sheets")
-export class DailyOrderSheets{
+export class DailyOrderSheet{
     @PrimaryGeneratedColumn({name:"id"})
     id:number;
 
-    @JoinColumn({name:"manufacture_id"})
-    @ManyToOne(type=>Manufacturers)
-    manufacture_id:number;
+    @JoinColumn({name:"manufacturer"})
+    @ManyToOne(type=>Manufacturer)
+    manufacturers:Manufacturer;
 
-    @JoinTable({name:"product_skues_id"})
-    @ManyToMany(type=>ProductSkues)
-    product_skues_id:number;
+    @JoinTable({name:"product_sku"})
+    @ManyToMany(type=>ProductSku)
+    product_skus:ProductSku;
 
     @Column({name:"order_date"})
     order_date:Date;
@@ -23,8 +23,8 @@ export class DailyOrderSheets{
     @Column({name:"quantity"})
     quantity:number;
 
-    @JoinColumn({name:"supplier_id"})
-    @ManyToOne(type=>Suppliers)
-    supplier_id:number;
+    @JoinColumn({name:"supplier"})
+    @ManyToOne(type=>Supplier)
+    suppliers:Supplier;
 
 }

@@ -1,20 +1,20 @@
 import { getEntityManager, Repository } from "typeorm";
-import {UserBillings} from "./../models/entities/userBillings";
+import {UserBilling} from "./../models/entities/userBillings";
 
 
 export class UserBillingsDAO {
 
-    private dao: Repository<UserBillings>;
+    private dao: Repository<UserBilling>;
 
     constructor() {
-        this.dao = getEntityManager().getRepository(UserBillings);
+        this.dao = getEntityManager().getRepository(UserBilling);
     }
 
     search(data: any) {
         return this.dao.find(data)
     }
 
-    save(data: UserBillings) {
+    save(data: UserBilling) {
         return this.dao.persist(data);
     }
 
@@ -22,7 +22,7 @@ export class UserBillingsDAO {
         return this.dao.findOneById(id)
     }
 
-    delete(data: UserBillings) {
+    delete(data: UserBilling) {
         return this.dao.remove([data]);
     }
 

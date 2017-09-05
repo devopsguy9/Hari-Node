@@ -10,7 +10,7 @@ import {DailyOrderSheetsController} from './controllers/dailyOrderSheetsControll
 import {DeliverySchedulesController} from './controllers/deliverySchedulesController'; 
 import {UserBillingsController} from './controllers/userBillingsController';  
 import {SuppliersController} from './controllers/suppliersController'; 
-import {SupplierUserDwellingMappersController} from './controllers/supplierUserDwellingMappersController';   
+//import {SupplierUserDwellingMappersController} from './controllers/supplierUserDwellingMappersController';   
 import {UsersController} from './controllers/usersController'; 
 import {DwellingController} from './controllers/dwellingController'; 
 import {SubCommunityController} from './controllers/subCommunityController'; 

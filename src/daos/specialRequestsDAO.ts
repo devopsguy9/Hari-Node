@@ -1,20 +1,20 @@
 import { getEntityManager, Repository } from "typeorm";
-import {SpecialRequests} from "./../models/entities/specialRequests";
+import {SpecialRequest} from "./../models/entities/specialRequests";
 
 
 export class SpecialRequestsDAO {
 
-    private dao: Repository<SpecialRequests>;
+    private dao: Repository<SpecialRequest>;
 
     constructor() {
-        this.dao = getEntityManager().getRepository(SpecialRequests);
+        this.dao = getEntityManager().getRepository(SpecialRequest);
     }
 
     search(data: any) {
         return this.dao.find(data)
     }
 
-    save(data: SpecialRequests) {
+    save(data: SpecialRequest) {
         return this.dao.persist(data);
     }
 
@@ -22,7 +22,7 @@ export class SpecialRequestsDAO {
         return this.dao.findOneById(id)
     }
 
-    delete(data: SpecialRequests) {
+    delete(data: SpecialRequest) {
         return this.dao.remove([data]);
     }
 

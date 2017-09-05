@@ -1,5 +1,5 @@
 /subCommunity/getAllSubCommunities:
-    get:
+    post:
         tags:
             - Sub Communities
         description:

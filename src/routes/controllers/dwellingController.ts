@@ -32,7 +32,7 @@ export class DwellingController{
 
         })
 
-       this.router.get('/getAllDwellings',async(request: Request,response:Response)=>{
+       this.router.post('/getAllDwellings',async(request: Request,response:Response)=>{
             console.log("in getAllDwellings"); 
            const user_service = new DwellingService();
            let result = user_service.getUsers();

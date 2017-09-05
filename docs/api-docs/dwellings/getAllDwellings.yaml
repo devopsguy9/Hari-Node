@@ -1,5 +1,5 @@
 /dwelling/getAllDwellings:
-    get:
+    post:
         tags:
             - Dwellings
         description:

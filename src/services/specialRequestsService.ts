@@ -1,5 +1,5 @@
 import { App } from "./../utils/App";
-import { SpecialRequests } from "./../models/entities/specialRequests";
+import { SpecialRequest } from "./../models/entities/specialRequests";
 import { SpecialRequestsDAO } from "./../daos/specialRequestsDAO";
 
 export class SpecialRequestsService {
@@ -29,7 +29,7 @@ export class SpecialRequestsService {
         }
     }
 
-    async save(item: SpecialRequests) {
+    async save(item: SpecialRequest) {
         try {
             if (this.validate(item)) {
                 let special_RequestsData: any = await this.special_RequestsDao.save(item);
@@ -52,7 +52,7 @@ export class SpecialRequestsService {
 
     async delete(id: any) {
         try {
-            let data: SpecialRequests = (await this.special_RequestsDao.entity(id))
+            let data: SpecialRequest = (await this.special_RequestsDao.entity(id))
             let result: any = await this.special_RequestsDao.delete(data);
             let returnData = {
                 id: id,
@@ -64,7 +64,7 @@ export class SpecialRequestsService {
         }
     }
 
-    async validate(item: SpecialRequests) {
+    async validate(item: SpecialRequest) {
         return true;
     }
 }

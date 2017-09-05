@@ -1,9 +1,9 @@
 import "reflect-metadata";
 
 import{createConnection,ConnectionOptions} from "typeorm";
-import { Users } from "../models/entities/users";
-import {communities} from "../models/entities/communities";
-import {SubCommunities} from "../models/entities/subCommunities";
+import { User } from "../models/entities/users";
+import {Community} from "../models/entities/communities";
+import {SubCommunity} from "../models/entities/subCommunities";
 
 
 export class  OrmConfig{
@@ -14,10 +14,10 @@ export class  OrmConfig{
         host: "localhost",
         port: 3306,
         username: "root",
-        password: "digitallync",
-        database: "phase1"
+        password: "varaprasad",
+        database: "Milkman"
     },
-    entities: [Users,communities,SubCommunities],
+    entities: [User,Community,SubCommunity],
     autoSchemaSync: false
 };
     

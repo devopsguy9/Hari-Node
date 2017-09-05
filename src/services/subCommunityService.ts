@@ -1,5 +1,5 @@
 import { SubCommunityDAO } from '../daos/subCommunityDAO';
-import { SubCommunities } from "../models/entities/subCommunities";
+import { SubCommunity } from "../models/entities/subCommunities";
 
 
 export class SubCommunityService {
@@ -10,7 +10,7 @@ export class SubCommunityService {
         
     }
     
-    async saveSubCommunity(item: SubCommunities) {
+    async saveSubCommunity(item: SubCommunity) {
         try {
         
                 console.log("In sub community service");
@@ -78,14 +78,14 @@ export class SubCommunityService {
 
 }
 
-async updateSubCommunity(id: any, item :SubCommunities){
+async updateSubCommunity(id: any, item :SubCommunity){
     try{
     
     
         let SubCommunityToUpdate :any = await this.subCommunityDAO.findOneById(id);
         if(SubCommunityToUpdate != undefined){
             SubCommunityToUpdate.name= item.name;
-            SubCommunityToUpdate.community_id= item.community_id;
+            SubCommunityToUpdate.community_id= item.community;
             SubCommunityToUpdate.active = item.active;
             
 

@@ -1,9 +1,9 @@
 import {Entity,Column,PrimaryGeneratedColumn,OneToMany,ManyToOne} from 'typeorm';
-import {SubCommunities} from './subCommunities';
-import {Users} from './users'
+import {SubCommunity} from './subCommunities';
+import {User} from './users'
 
-@Entity("communites")
-export class communities{
+@Entity("communities")
+export class Community{
     @PrimaryGeneratedColumn({name:"id"})
     id:string;
 

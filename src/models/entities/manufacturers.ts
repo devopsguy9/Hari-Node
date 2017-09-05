@@ -1,8 +1,10 @@
+import { Product } from './products';
 import {Entity,Column,PrimaryGeneratedColumn,OneToMany,ManyToOne} from 'typeorm';
+import {DailyOrderSheet} from './dailyOrderSheets';
 
 
 @Entity("manufacturers")
-export class Manufacturers{
+export class Manufacturer{
     @PrimaryGeneratedColumn({name:"id"})
     id:number;
 
@@ -20,5 +22,17 @@ export class Manufacturers{
         length:255
     })
     comments:string;
+    
+    @OneToMany(type=>DailyOrderSheet,daily_order_sheets=>daily_order_sheets.manufacturers,{
+        cascadeInsert:true,
+        cascadeUpdate:true
+    })
+    daily_order_sheets:DailyOrderSheet[];
+
+    @OneToMany(type=>Product,products=>products.manufacturers,{
+        cascadeInsert:true,
+        cascadeUpdate:true
+    })
+    products:Product[];
 
 }

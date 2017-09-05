@@ -1,20 +1,20 @@
 import { getEntityManager, Repository } from "typeorm";
-import {HoldRequests} from "./../models/entities/holdRequests";
+import {HoldRequest} from "./../models/entities/holdRequests";
 
 
 export class HoldRequestsDAO {
 
-    private dao: Repository<HoldRequests>;
+    private dao: Repository<HoldRequest>;
 
     constructor() {
-        this.dao = getEntityManager().getRepository(HoldRequests);
+        this.dao = getEntityManager().getRepository(HoldRequest);
     }
 
     search(data: any) {
         return this.dao.find(data)
     }
 
-    save(data: HoldRequests) {
+    save(data: HoldRequest) {
         return this.dao.persist(data);
     }
 
@@ -22,7 +22,7 @@ export class HoldRequestsDAO {
         return this.dao.findOneById(id)
     }
 
-    delete(data: HoldRequests) {
+    delete(data: HoldRequest) {
         return this.dao.remove([data]);
     }
 

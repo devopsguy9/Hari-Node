@@ -1,20 +1,20 @@
 import { getEntityManager, Repository } from "typeorm";
-import {DailyOrderSheets} from "./../models/entities/dailyOrderSheets";
+import {DailyOrderSheet} from "./../models/entities/dailyOrderSheets";
 
 
 export class DailyOrderSheetsDAO {
 
-    private dao: Repository<DailyOrderSheets>;
+    private dao: Repository<DailyOrderSheet>;
 
     constructor() {
-        this.dao = getEntityManager().getRepository(DailyOrderSheets);
+        this.dao = getEntityManager().getRepository(DailyOrderSheet);
     }
 
     search(data: any) {
         return this.dao.find(data)
     }
 
-    save(data: DailyOrderSheets) {
+    save(data: DailyOrderSheet) {
         return this.dao.persist(data);
     }
 
@@ -22,7 +22,7 @@ export class DailyOrderSheetsDAO {
         return this.dao.findOneById(id)
     }
 
-    delete(data: DailyOrderSheets) {
+    delete(data: DailyOrderSheet) {
         return this.dao.remove([data]);
     }
 
@@ -32,4 +32,4 @@ export class DailyOrderSheetsDAO {
 
 }
 
-Object.seal(DailyOrderSheets)
+Object.seal(DailyOrderSheet)

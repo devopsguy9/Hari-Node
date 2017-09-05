@@ -6,7 +6,6 @@ import * as express from "express";
 
 import { json, urlencoded } from "body-parser";
 import * as http from "http";
-import * as ejs from "ejs";
 
 
 import {OrmConfig} from "./config/ormConfig";
@@ -78,7 +77,7 @@ app.all('*', function (req, res, next) {
 
 app.get("/", (request: express.Request, response: express.Response) => {
     response.json({
-        name: "MilkMan Under Development...:) :|"
+        name: "MilkMan On Boarded.. :|"
     })
 });
 

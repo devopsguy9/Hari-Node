@@ -2,7 +2,7 @@
 
 
 import { UsersDAO } from '../daos/usersDAO';
-import { Users } from "../models/entities/users";
+import { User } from "../models/entities/users";
 
 
 export class UsersService {
@@ -13,7 +13,7 @@ export class UsersService {
         
     }
     
-    async saveUser(item: Users) {
+    async saveUser(item: User) {
         try {
         
                 console.log("In user service");
@@ -101,7 +101,7 @@ export class UsersService {
 
 }
 
-async updateUser(id: any, item :Users){
+async updateUser(id: any, item :User){
     try{
     
     

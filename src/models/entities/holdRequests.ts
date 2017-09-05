@@ -1,16 +1,16 @@
-import { Users } from './users';
-import { Suppliers } from './suppliers';
+import { User } from './users';
+import { Supplier } from './suppliers';
 import { Column, Entity, JoinColumn, ManyToOne, OneToMany, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
-import {UserDwellings} from './userDwellings';
+import {UserDwelling} from './userDwellings';
 
 @Entity("hold_requests")
-export class HoldRequests{
+export class HoldRequest{
     @PrimaryGeneratedColumn({name:"id"})
     id:number;
 
-    @JoinColumn({name:"user_dwelling_id"})
-    @ManyToOne(type=>UserDwellings)
-    user_dwelling_id:number;
+    @JoinColumn({name:"user_dwelling"})
+    @ManyToOne(type=>UserDwelling)
+    user_dwellings:UserDwelling;
 
     @Column({name:"raised_on"})
     raised_on:Date;
@@ -21,13 +21,13 @@ export class HoldRequests{
     @Column({name:"end_date"})
     end_date:Date;
 
-    @JoinColumn({name:"users_id"})
-    @ManyToOne(type=>Users)
-    users_id:number;
+    @JoinColumn({name:"user"})
+    @ManyToOne(type=>User)
+    users:User;
 
-    @JoinColumn({name:"supplier_id"})
-    @OneToOne(type=>Suppliers)
-    supplier_id:number;
+    @JoinColumn({name:"supplier"})
+    @OneToOne(type=>Supplier)
+    suppliers:Supplier;
 
 
 }

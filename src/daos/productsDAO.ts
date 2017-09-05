@@ -1,14 +1,14 @@
 import { getEntityManager, Repository } from "typeorm";
-import { Products } from "../models/entities/products";
+import { Product } from "../models/entities/products";
 import{BaseDAO} from "../config/baseDAO";
 
-export class ProductsDAO extends BaseDAO<Products>{
+export class ProductsDAO extends BaseDAO<Product>{
     
-private rep: Repository<Products>;
+private rep: Repository<Product>;
 
     constructor() {
-    super(Products);
-        this.rep = getEntityManager().getRepository(Products);
+    super(Product);
+        this.rep = getEntityManager().getRepository(Product);
     }
     
     

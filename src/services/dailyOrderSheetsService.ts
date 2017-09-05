@@ -1,5 +1,5 @@
 import { App } from "./../utils/App";
-import { DailyOrderSheets } from "./../models/entities/dailyOrderSheets";
+import { DailyOrderSheet } from "./../models/entities/dailyOrderSheets";
 import { DailyOrderSheetsDAO } from "./../daos/dailyOrderSheetsDAO";
 
 export class DailyOrderSheetsService {
@@ -29,7 +29,7 @@ export class DailyOrderSheetsService {
         }
     }
 
-    async save(item: DailyOrderSheets) {
+    async save(item: DailyOrderSheet) {
         try {
             if (this.validate(item)) {
                 let daily_Order_SheetsData: any = await this.dailyOrderSheetsDao.save(item);
@@ -52,7 +52,7 @@ export class DailyOrderSheetsService {
 
     async delete(id: any) {
         try {
-            let data: DailyOrderSheets = (await this.dailyOrderSheetsDao.entity(id))
+            let data: DailyOrderSheet = (await this.dailyOrderSheetsDao.entity(id))
             let result: any = await this.dailyOrderSheetsDao.delete(data);
             let returnData = {
                 id: id,
@@ -64,7 +64,7 @@ export class DailyOrderSheetsService {
         }
     }
 
-    async validate(item: DailyOrderSheets) {
+    async validate(item: DailyOrderSheet) {
         return true;
     }
 }

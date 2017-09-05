@@ -1,5 +1,5 @@
 import { App } from "./../utils/App";
-import { DeliverySchedules } from "./../models/entities/deliverySchedules";
+import { DeliverySchedule } from "./../models/entities/deliverySchedules";
 import { DeliverySchedulesDAO } from "./../daos/deliverySchedulesDAO";
 
 export class DeliverySchedulesService {
@@ -29,7 +29,7 @@ export class DeliverySchedulesService {
         }
     }
 
-    async save(item: DeliverySchedules) {
+    async save(item: DeliverySchedule) {
         try {
             if (this.validate(item)) {
                 let delivery_SchedulesData: any = await this.delivery_SchedulesDao.save(item);
@@ -52,7 +52,7 @@ export class DeliverySchedulesService {
 
     async delete(id: any) {
         try {
-            let data: DeliverySchedules = (await this.delivery_SchedulesDao.entity(id))
+            let data: DeliverySchedule = (await this.delivery_SchedulesDao.entity(id))
             let result: any = await this.delivery_SchedulesDao.delete(data);
             let returnData = {
                 id: id,
@@ -64,7 +64,7 @@ export class DeliverySchedulesService {
         }
     }
 
-    async validate(item: DeliverySchedules) {
+    async validate(item: DeliverySchedule) {
         return true;
     }
 }

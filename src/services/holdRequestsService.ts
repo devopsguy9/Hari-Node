@@ -1,5 +1,5 @@
 import { App } from "./../utils/App";
-import { HoldRequests } from "./../models/entities/holdRequests";
+import { HoldRequest } from "./../models/entities/holdRequests";
 import { HoldRequestsDAO } from "./../daos/holdRequestsDAO";
 
 export class HoldRequestsService {
@@ -29,7 +29,7 @@ export class HoldRequestsService {
         }
     }
 
-    async save(item:HoldRequests) {
+    async save(item:HoldRequest) {
         try {
             if (this.validate(item)) {
                 
@@ -53,7 +53,7 @@ export class HoldRequestsService {
 
     async delete(id: any) {
         try {
-            let data: HoldRequests = (await this.hold_RequestsDao.entity(id))
+            let data: HoldRequest = (await this.hold_RequestsDao.entity(id))
             let result: any = await this.hold_RequestsDao.delete(data);
             let returnData = {
                 id: id,
@@ -65,7 +65,7 @@ export class HoldRequestsService {
         }
     }
 
-    async validate(item: HoldRequests) {
+    async validate(item: HoldRequest) {
         return true;
     }
 }

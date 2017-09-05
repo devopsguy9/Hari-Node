@@ -1,5 +1,5 @@
 import { App } from "./../utils/App";
-import { Suppliers } from "./../models/entities/suppliers";
+import { Supplier } from "./../models/entities/suppliers";
 import { SuppliersDAO } from "./../daos/suppliersDAO";
 
 export class SuppliersService {
@@ -29,7 +29,7 @@ export class SuppliersService {
         }
     }
 
-    async save(item: Suppliers) {
+    async save(item: Supplier) {
         try {
             if (this.validate(item)) {
                 let suppliersData: any = await this.suppliersDao.save(item);
@@ -52,7 +52,7 @@ export class SuppliersService {
 
     async delete(id: any) {
         try {
-            let data: Suppliers = (await this.suppliersDao.entity(id))
+            let data: Supplier = (await this.suppliersDao.entity(id))
             let result: any = await this.suppliersDao.delete(data);
             let returnData = {
                 id: id,
@@ -64,7 +64,7 @@ export class SuppliersService {
         }
     }
 
-    async validate(item: Suppliers) {
+    async validate(item: Supplier) {
         return true;
     }
 }

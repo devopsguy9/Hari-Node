@@ -1,8 +1,9 @@
-import {Entity,Column,PrimaryGeneratedColumn,OneToOne,JoinColumn} from 'typeorm';
-import {UserDwellings} from './userDwellings';
+import { HoldRequest } from './holdRequests';
+import {Entity,Column,PrimaryGeneratedColumn,OneToOne,JoinColumn,OneToMany} from 'typeorm';
+import {UserDwelling} from './userDwellings';
 
-@Entity("users")
-export class Users{
+@Entity("user")
+export class User{
     @PrimaryGeneratedColumn({name:"id"})
     id:number;
 
@@ -35,5 +36,16 @@ export class Users{
         length:100
     })
     salt:string;
+    @OneToMany(type=>HoldRequest,hold_requests=>hold_requests.users,{
+        cascadeInsert:true,
+        cascadeUpdate:true
+    })
+    holdrequests:HoldRequest[];
+
+    @OneToMany(type=>UserDwelling,user_dwelling=>user_dwelling.users,{
+        cascadeInsert:true,
+        cascadeUpdate:true
+    })
+    user_dwellings:UserDwelling[];
 
 }

@@ -1,20 +1,20 @@
 import { getEntityManager, Repository } from "typeorm";
-import {RegularConsumptions} from "./../models/entities/regularConsumptions";
+import {RegularConsumption} from "./../models/entities/regularConsumptions";
 
 
 export class RegularConsumptionsDAO {
 
-    private dao: Repository<RegularConsumptions>;
+    private dao: Repository<RegularConsumption>;
 
     constructor() {
-        this.dao = getEntityManager().getRepository(RegularConsumptions);
+        this.dao = getEntityManager().getRepository(RegularConsumption);
     }
 
     search(data: any) {
         return this.dao.find(data)
     }
 
-    save(data: RegularConsumptions) {
+    save(data: RegularConsumption) {
         return this.dao.persist(data);
     }
 
@@ -22,7 +22,7 @@ export class RegularConsumptionsDAO {
         return this.dao.findOneById(id)
     }
 
-    delete(data: RegularConsumptions) {
+    delete(data: RegularConsumption) {
         return this.dao.remove([data]);
     }
 

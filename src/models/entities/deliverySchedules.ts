@@ -1,25 +1,25 @@
-import { UserBillings } from './userBillings';
-import { ProductSkues } from './productSkues';
-import { UserDwellings } from './userDwellings';
+import { UserBilling } from './userBillings';
+import { ProductSku } from './productSkus';
+import { UserDwelling } from './userDwellings';
 import { Column, Entity, JoinColumn, JoinTable, ManyToMany, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import {SubCommunities} from './subCommunities';
+import {SubCommunity} from './subCommunities';
 
 
 @Entity("delivery_schedules")
-export class DeliverySchedules{
+export class DeliverySchedule{
     @PrimaryGeneratedColumn({name:"id"})
     id:number;
 
-    @Column({name:"sub_community_id"})
-    sub_community_id:number;
+    @Column({name:"sub_community"})
+    sub_communities:number;
 
-    @JoinColumn({name:"user_dwelling_id"})
-    @ManyToOne(type=>UserDwellings)
-    user_dwelling_id:number;
+    @JoinColumn({name:"user_dwelling"})
+    @ManyToOne(type=>UserDwelling)
+    user_dwellings:UserDwelling;
 
-    @JoinTable({name:"product_sku_id"})
-    @ManyToMany(type=>ProductSkues)
-    product_sku_id:number;
+    @JoinTable({name:"product_skus"})
+    @ManyToMany(type=>ProductSku)
+    product_sku_id:ProductSku;
 
     @Column({name:"quantity"})
     quantity:number;

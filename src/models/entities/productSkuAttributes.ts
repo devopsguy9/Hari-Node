@@ -1,18 +1,18 @@
-import { ProductAttributes } from './productAttributes';
+import { ProductAttribute } from './productAttributes';
 import { Column, Entity, JoinColumn, ManyToOne, OneToMany, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
 
 
 @Entity("product_sku_attributes")
-export class ProductSkuAttributes{
+export class ProductSkuAttribute{
     @PrimaryGeneratedColumn({name:"id"})
     id:number;
 
     @Column({name:"product_sku_id"})
     product_sku_id:number;
 
-    @JoinColumn({name:"product_attribute_id"})
-    @OneToOne(type=>ProductAttributes)
-    product_attribute_id:number;
+    @JoinColumn({name:"product_attribute"})
+    @OneToOne(type=>ProductAttribute)
+    product_attributes:ProductAttribute;
 
     @Column({
         name:"attribute_value",

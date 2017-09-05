@@ -1,20 +1,20 @@
 import { getEntityManager, Repository } from "typeorm";
-import {Suppliers} from "./../models/entities/suppliers";
+import {Supplier} from "./../models/entities/suppliers";
 
 
 export class SuppliersDAO {
 
-    private dao: Repository<Suppliers>;
+    private dao: Repository<Supplier>;
 
     constructor() {
-        this.dao = getEntityManager().getRepository(Suppliers);
+        this.dao = getEntityManager().getRepository(Supplier);
     }
 
     search(data: any) {
         return this.dao.find(data)
     }
 
-    save(data: Suppliers) {
+    save(data: Supplier) {
         return this.dao.persist(data);
     }
 
@@ -22,7 +22,7 @@ export class SuppliersDAO {
         return this.dao.findOneById(id)
     }
 
-    delete(data: Suppliers) {
+    delete(data: Supplier) {
         return this.dao.remove([data]);
     }
 

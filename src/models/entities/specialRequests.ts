@@ -1,15 +1,16 @@
-import { Suppliers } from './suppliers';
+import { SpecialRequestDetail } from './specialRequestDetails';
+import { Supplier } from './suppliers';
 import { Column, Entity, JoinColumn, JoinTable, ManyToMany, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import {UserDwellings} from './userDwellings';
+import {UserDwelling} from './userDwellings';
 
-@Entity("special_Requests")
-export class SpecialRequests{
+@Entity("special_request")
+export class SpecialRequest{
     @PrimaryGeneratedColumn({name:"id"})
     id:number;
 
-    @JoinColumn({name:"user_dwelling_id"})
-    @ManyToOne(type=>UserDwellings)
-    user_dwelling_id:number;
+    @JoinColumn({name:"user_dwelling"})
+    @ManyToOne(type=>UserDwelling)
+    user_dwellings:UserDwelling;
 
     @Column({name:"raised_on"})
     raised_on:Date;
@@ -23,8 +24,14 @@ export class SpecialRequests{
     @Column({name:"override"})
     override:boolean;
 
-    @JoinTable({name:"supplier_id"})
-    @ManyToMany(type=>Suppliers)
-    supplier_id:number;
+    @JoinTable({name:"supplier"})
+    @ManyToMany(type=>Supplier)
+    suppliers:Supplier;
+
+    @OneToMany(type=>SpecialRequestDetail,special_request_details=>special_request_details.special_requests,{
+        cascadeInsert:true,
+        cascadeUpdate:true
+    })
+    special_request_details:SpecialRequestDetail[];
 
 }

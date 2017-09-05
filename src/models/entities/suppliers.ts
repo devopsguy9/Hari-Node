@@ -1,8 +1,9 @@
+import { UserBilling } from './userBillings';
 import {Entity,Column,PrimaryGeneratedColumn,OneToMany,ManyToOne} from 'typeorm';
-
+import {DailyOrderSheet} from './dailyordersheets';
 
 @Entity("suppliers")
-export class Suppliers{
+export class Supplier{
     @PrimaryGeneratedColumn()
     id:number;
 
@@ -26,6 +27,19 @@ export class Suppliers{
 
     @Column({name:"active"})
     active:boolean;
+
+    // @OneToMany(type=>DailyOrderSheet,daily_order_sheets=>
+    // daily_order_sheets.suppliers,{
+    //     cascadeInsert:true,
+    //     cascadeUpdate:true
+    // })
+    // dailyordersheets:DailyOrderSheet[];
+
+    @OneToMany(type=>UserBilling,user_billings=>user_billings.suppliers,{
+        cascadeInsert:true,
+        cascadeUpdate:true
+    })
+    userbilling:UserBilling[];
 
 
 }

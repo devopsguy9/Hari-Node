@@ -1,5 +1,5 @@
 import { App } from "./../utils/App";
-import { RegularConsumptions } from "./../models/entities/regularConsumptions";
+import { RegularConsumption } from "./../models/entities/regularConsumptions";
 import { RegularConsumptionsDAO } from "./../daos/regularConsumptionsDAO";
 
 export class RegularConsumptionsService {
@@ -29,7 +29,7 @@ export class RegularConsumptionsService {
         }
     }
 
-    async save(item: RegularConsumptions) {
+    async save(item: RegularConsumption) {
         try {
             if (this.validate(item)) {
                 let regular_ConsumptionsData: any = await this.regular_ConsumptionsDao.save(item);
@@ -52,7 +52,7 @@ export class RegularConsumptionsService {
 
     async delete(id: any) {
         try {
-            let data: RegularConsumptions = (await this.regular_ConsumptionsDao.entity(id))
+            let data: RegularConsumption = (await this.regular_ConsumptionsDao.entity(id))
             let result: any = await this.regular_ConsumptionsDao.delete(data);
             let returnData = {
                 id: id,
@@ -64,7 +64,7 @@ export class RegularConsumptionsService {
         }
     }
 
-    async validate(item: RegularConsumptions) {
+    async validate(item: RegularConsumption) {
         return true;
     }
 }

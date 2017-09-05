@@ -1,14 +1,14 @@
 import { getEntityManager, Repository } from "typeorm";
-import { SubCommunities } from "../models/entities/subCommunities";
+import { SubCommunity } from "../models/entities/subCommunities";
 import{BaseDAO} from "../config/baseDAO";
 
-export class SubCommunityDAO extends BaseDAO<SubCommunities>{
+export class SubCommunityDAO extends BaseDAO<SubCommunity>{
     
-private rep: Repository<SubCommunities>;
+private rep: Repository<SubCommunity>;
 
     constructor() {
-    super(SubCommunities);
-        this.rep = getEntityManager().getRepository(SubCommunities);
+    super(SubCommunity);
+        this.rep = getEntityManager().getRepository(SubCommunity);
     }
     
     

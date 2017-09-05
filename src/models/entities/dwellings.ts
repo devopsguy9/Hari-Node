@@ -1,10 +1,10 @@
 import {Entity,Column,PrimaryGeneratedColumn,JoinTable,OneToMany,ManyToOne,ManyToMany,JoinColumn} from 'typeorm';
-import {SubCommunities} from './subCommunities';
-import {UserDwellings} from './userDwellings';
+import {SubCommunity} from './subCommunities';
+import {UserDwelling} from './userDwellings';
 
 
 @Entity("dwellings")
-export class Dwellings{
+export class Dwelling{
     @PrimaryGeneratedColumn({name:"id"})
     id:number;
 
@@ -14,9 +14,9 @@ export class Dwellings{
     })
     name:string;
 
-    @JoinColumn({name:"sub_community_id"})
-    @ManyToOne(type=>SubCommunities)
-    sub_community_id:number;
+    @JoinColumn({name:"sub_community"})
+    @ManyToOne(type=>SubCommunity)
+    sub_communities:SubCommunity;
 
     @Column({name:"active"})
     active:boolean;

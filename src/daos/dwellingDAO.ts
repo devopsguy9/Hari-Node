@@ -1,14 +1,14 @@
 import { getEntityManager, Repository } from "typeorm";
-import { Dwellings } from "../models/entities/dwellings";
+import { Dwelling } from "../models/entities/dwellings";
 import{BaseDAO} from "../config/baseDAO";
 
-export class DwellingDAO extends BaseDAO<Dwellings>{
+export class DwellingDAO extends BaseDAO<Dwelling>{
     
-private rep: Repository<Dwellings>;
+private rep: Repository<Dwelling>;
 
     constructor() {
-    super(Dwellings);
-        this.rep = getEntityManager().getRepository(Dwellings);
+    super(Dwelling);
+        this.rep = getEntityManager().getRepository(Dwelling);
     }
     
     
