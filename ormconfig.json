@@ -7,7 +7,7 @@
         "host" :"35.202.92.50",
         "port": 3306,
         "username": "root",
-        "password": "Shashi123",
+        "password": "Shashi123*",
         "database": "milkman",
         "usePool": true
       },
