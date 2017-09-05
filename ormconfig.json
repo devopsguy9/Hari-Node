@@ -10,7 +10,7 @@
         "database": "milkman",
         "usePool": true
       },
-      "autoSchemaSync": true,
+      "autoSchemaSync": false,
       "entities": [
         "dist/models/entities/*.js"
       ],
