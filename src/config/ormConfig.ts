@@ -18,7 +18,7 @@ export class  OrmConfig{
         database: "Milkman"
     },
     entities: [User,Community,SubCommunity],
-    autoSchemaSync: false
+    autoSchemaSync: true
 };
     
     constructor(){

@@ -10,7 +10,7 @@
         "database": "phase1",
         "usePool": true
       },
-      "autoSchemaSync": false,
+      "autoSchemaSync": true,
       "entities": [
         "dist/models/entities/*.js"
       ],
