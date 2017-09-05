@@ -1,6 +1,6 @@
 import { UserBilling } from './userBillings';
 import {Entity,Column,PrimaryGeneratedColumn,OneToMany,ManyToOne} from 'typeorm';
-import {DailyOrderSheet} from './dailyordersheets';
+import {DailyOrderSheet} from './dailyOrderSheets';
 
 @Entity("suppliers")
 export class Supplier{

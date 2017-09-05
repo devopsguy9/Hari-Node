@@ -14,11 +14,12 @@ export class  OrmConfig{
         host: "localhost",
         port: 3306,
         username: "root",
-        password: "varaprasad",
-        database: "Milkman"
+        password: "Shashi123",
+        database: "milkman",
+        usePool: true
     },
     entities: [User,Community,SubCommunity],
-    autoSchemaSync: true
+    autoSchemaSync: false
 };
     
     constructor(){

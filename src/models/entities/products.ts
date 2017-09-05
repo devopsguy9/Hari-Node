@@ -1,6 +1,6 @@
 import { Manufacturer } from './manufacturers';
 import {Entity,Column,PrimaryGeneratedColumn,OneToMany,ManyToOne,JoinColumn} from 'typeorm';
-import {ProductSku} from './productskus'
+import {ProductSku} from './productSkus'
 
 @Entity("products")
 export class Product{
