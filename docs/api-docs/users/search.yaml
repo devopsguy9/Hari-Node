@@ -1,5 +1,5 @@
 /user/:
-    get:
+    post:
         tags:
             - Users
         description:

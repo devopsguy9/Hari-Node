@@ -9,7 +9,7 @@ export class UsersController{
 
     getRouter():Router{
         
-        this.router.get("/", async(request: Request, response: Response) => {
+        this.router.post("/", async(request: Request, response: Response) => {
           //  let reqData= request.body ? request.body.data : {};
             const result = this.userService.findAll();
             App.Send(request, response, result);
