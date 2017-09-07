@@ -4,7 +4,7 @@ import {BaseDAO} from "../config/baseDAO";
 
 export class CommunityDAO extends BaseDAO<Community>{
     
-private rep: Repository<Community>;
+public rep: Repository<Community>;
 
     constructor() {
         super(Community);
@@ -12,11 +12,7 @@ private rep: Repository<Community>;
 
     }
     
-   /* validate(data: any){
-    return true;
-    }
-    
-*/
+  
  
     }
 

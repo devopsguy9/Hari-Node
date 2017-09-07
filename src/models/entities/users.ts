@@ -48,4 +48,10 @@ export class User{
     })
     user_dwellings:UserDwelling[];
 
+    @Column({
+        name:"active",
+        length:100
+    })
+    active:boolean;
+
 }

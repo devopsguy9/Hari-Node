@@ -4,7 +4,7 @@ import {RegularConsumption} from "./../models/entities/regularConsumptions";
 
 export class RegularConsumptionsDAO {
 
-    private dao: Repository<RegularConsumption>;
+    public dao: Repository<RegularConsumption>;
 
     constructor() {
         this.dao = getEntityManager().getRepository(RegularConsumption);

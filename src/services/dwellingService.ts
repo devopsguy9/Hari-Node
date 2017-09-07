@@ -101,7 +101,7 @@ export class DwellingService {
 
 }
 
-async updateUser(id: any, item :Dwelling){
+/*async updateUser(id: any, item :Dwelling){
     try{
     
     
@@ -128,6 +128,8 @@ async updateUser(id: any, item :Dwelling){
         return Promise.reject(error);
     }
 }
+
+*/
 
 
 }

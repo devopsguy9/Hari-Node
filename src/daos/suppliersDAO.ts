@@ -4,7 +4,7 @@ import {Supplier} from "./../models/entities/suppliers";
 
 export class SuppliersDAO {
 
-    private dao: Repository<Supplier>;
+    public dao: Repository<Supplier>;
 
     constructor() {
         this.dao = getEntityManager().getRepository(Supplier);

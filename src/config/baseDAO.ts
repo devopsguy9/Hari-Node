@@ -17,7 +17,7 @@ export class BaseDAO<T>{
 
     search(data:any){
         return this.dao.find(data);
-        }
+        }  
 
         save(data:T){
             return this.dao.persist(data);
@@ -43,5 +43,9 @@ export class BaseDAO<T>{
              findOneById(data:T){
                  return this.dao.findOneById(data);
              }
+
+             entity(id: any) {
+                return this.dao.findOneById(id);
+            }
 
 }

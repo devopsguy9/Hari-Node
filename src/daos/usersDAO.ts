@@ -4,7 +4,7 @@ import{BaseDAO} from "../config/baseDAO";
 
 export class UsersDAO extends BaseDAO<User>{
     
-private rep: Repository<User>;
+public rep: Repository<User>;
 
     constructor() {
     super(User);

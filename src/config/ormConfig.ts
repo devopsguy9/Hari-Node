@@ -1,9 +1,9 @@
 import "reflect-metadata";
 
 import{createConnection,ConnectionOptions} from "typeorm";
-import { User } from "../models/entities/users";
+/*import { User } from "../models/entities/users";
 import {Community} from "../models/entities/communities";
-import {SubCommunity} from "../models/entities/subCommunities";
+import {SubCommunity} from "../models/entities/subCommunities";   */
 
 
 export class  OrmConfig{
@@ -14,11 +14,11 @@ export class  OrmConfig{
         host: "localhost",
         port: 3306,
         username: "root",
-        password: "Shashi123",
+        password: "root",
         database: "milkman",
         usePool: true
     },
-    entities: [User,Community,SubCommunity],
+    entities: ["dist/models/entities/*.js"],
     autoSchemaSync: false
 };
     

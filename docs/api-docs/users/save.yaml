@@ -1,9 +1,9 @@
-/user/adduser:
+/user/:
     put:
         tags:
             - Users
         description:
-             Create User Account
+             Create / update User Account
         parameters:
           - name: body
             in: body
@@ -13,6 +13,9 @@
                     data:
                         type: object
                         properties:
+                            id:
+                                type: number
+                                example : null
                             name:
                                 type: string
                                 example: "sanjeevini"
@@ -28,6 +31,9 @@
                             salt:
                                 type: string
                                 example: "kfakff"
+                            active:
+                                type: boolean
+                                example: false    
                             
         responses:
             200:

@@ -1,0 +1,37 @@
+/products/:
+    put:
+        tags:
+            -  products
+        description:
+             Create a  product 
+        parameters:
+          - name: body
+            in: body
+            schema:
+                type: object
+                properties:
+                    data:
+                        type: object
+                        properties:
+                            name:
+                                type: string
+                                example: "Heritage cow milk"
+                            description:
+                                type: string
+                                example: "This is a very good milk rich in fat"
+                            manufacture_id:
+                                type: int
+                                example : 1
+                            product_category_id:
+                                type: int
+                                example : 1
+                            active:
+                                 type: boolean
+                                 example: true
+                            supplier_id: 
+                                 type: int
+                                 example: 1
+                             
+        responses:
+            200:
+                description: "status:1 is success; status: 0 is failure;"

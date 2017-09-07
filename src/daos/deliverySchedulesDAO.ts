@@ -4,7 +4,7 @@ import {DeliverySchedule} from "./../models/entities/deliverySchedules";
 
 export class DeliverySchedulesDAO {
 
-    private dao: Repository<DeliverySchedule>;
+    public dao: Repository<DeliverySchedule>;
 
     constructor() {
         this.dao = getEntityManager().getRepository(DeliverySchedule);

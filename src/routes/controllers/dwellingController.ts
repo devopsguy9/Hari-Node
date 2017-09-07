@@ -40,7 +40,7 @@ export class DwellingController{
 
         })
 
-           this.router.post('/updateDwelling/:id',async(request: Request,response:Response)=>{
+        /*   this.router.post('/updateDwelling/:id',async(request: Request,response:Response)=>{
             console.log("in updateUser"); 
             let user_id =  request.params.id;
             console.log(user_id)
@@ -50,7 +50,7 @@ export class DwellingController{
             let result = user_service.updateUser(user_id,reqObj);
             App.Send(request,response,result);
 
-        })
+        })   */
 /*
 
         this.router.get('/deleteUser/:id',async(request: Request,response:Response)=>{

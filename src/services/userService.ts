@@ -1,5 +1,6 @@
 
 
+import { App } from "./../utils/App";
 
 import { UsersDAO } from '../daos/usersDAO';
 import { User } from "../models/entities/users";
@@ -13,123 +14,71 @@ export class UsersService {
         
     }
     
-    async saveUser(item: User) {
+    async save(item: User) {
         try {
-        
-                console.log("In user service");
-                let data = await this.userDAO.search({ phone: item.phone });
-                if(data.length>0){
-                        let returnData={
-                            "message" : "User already exists",
-                            "data" : data
-                        }
-                      return Promise.resolve(returnData);  
-                            }else{
-                        let addData = await this.userDAO.save(item);
-                        let returnData ={
-                                "message": "User has been saved successfully",
-                                "data" : addData
-                        }
-                        return Promise.resolve(returnData);
+            let data = await this.userDAO.search({phone: item.phone});
+                if(item.id!=null && data.length>0){
+                    let userData : any = await this.userDAO.save(item);
+                    let returnData = {
+                        id: item.id,
+                        message: "Updated Successfully"
                     }
+                    return Promise.resolve(returnData);
+                } else if (item.id == null && data.length > 0) {
+                    return Promise.reject({ message: "Phone number Already Exits" });
+                }else {
+                    let updateUser = await this.userDAO.save(item);
+                        return Promise.resolve(updateUser);
                 }
-
+            }
                   catch (error) {
                     return Promise.reject(error);
                     }
         
         }
 
-
-   async getUserById(item: any){
-       try{
-           console.log("In get Userby id method");
-           let userData = await this.userDAO.findRecord({id : item});
-           let message="User found";
-           if(userData==undefined)
-           message="User Not found";
-           
-           let returnData = { 
-               data : userData,
-               message : message
-           }
-
-           
-            return Promise.resolve(returnData);
-       }catch(error){
-           console.log(error);
-           return Promise.reject(error);
-       }
-   }
-
-
-
-  async deleteUserById(item:any){
-      try{
-           console.log("In get deleteUserById id method");
-           let userData = await this.userDAO.delete({id : item});
-           let message="User has been deleted";
-           if(userData==undefined)
-           message="User Not found";
-           
-           let returnData={
-               "message" : message,
-               "data": userData
-           }
-           return Promise.resolve(returnData);
-       }catch(error){
-           console.log(error);
-           return Promise.reject(error);
-       }
-  }
-
-
-  async getUsers(){
-      try{
-          console.log("In get all users");
-          let usersData = await this.userDAO.findAll();
-          let returnData = {
-              data : usersData,
-              message: usersData.length
-          }
-          return Promise.resolve(returnData);
-      }
-   catch(error){
-      console.log(error);
-      return Promise.reject(error);
-  }
-
-}
-
-async updateUser(id: any, item :User){
-    try{
-    
-    
-        let userToUpdate :any = await this.userDAO.findOneById(id);
-        if(userToUpdate != undefined){
-            userToUpdate.name= item.name;
-            userToUpdate.email= item.email;
-            userToUpdate.phone = item.phone;
-            userToUpdate.password= item.password;
-            userToUpdate.salt= item.salt;
-
-            let updateUser = await this.userDAO.save(userToUpdate);
-            let returnData = { 
-                data: updateUser,
-                message:"User record has been updated"
+        async entity(id: any) {
+            try {
+                let data: any = await this.userDAO.entity(id);
+                return Promise.resolve(data);
+            } catch (error) {
+                return Promise.reject(error);
             }
-            return Promise.resolve(returnData);
-        } else{
-            let returnData = {
-                message : "User record not found"
+        }
+
+
+        async delete(id: any) {
+            try {
+                let data: User = (await this.userDAO.entity(id))
+                data.active = false;
+                let result: any = await this.userDAO.save(data);
+                let returnData = {
+                    id: id,
+                    message: "Removed Successfully"
+                }
+                return Promise.resolve(returnData);
+            } catch (error) {
+                return Promise.reject(error);
             }
-            return Promise.resolve(returnData);
-        }   
-    }catch(error){
-        console.log(error);
-        return Promise.reject(error);
-    }
-}
+        }
 
 
+        async findAll() {
+            try {
+                let data: any = await this.userDAO.findAll();
+                return Promise.resolve(data)
+            } catch (error) {
+                return Promise.reject(error);
+            }
+        }
+
+
+
+
+
+
+
+
+
+  
 }

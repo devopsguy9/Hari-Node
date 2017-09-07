@@ -1,0 +1,32 @@
+/supplier/:
+    put:
+        tags:
+            - suppliers
+        description:
+             Create supplier
+        parameters:
+          - name: body
+            in: body
+            schema:
+                type: object
+                properties:
+                    data:
+                        type: object
+                        properties:
+                            name:
+                                type: string
+                                example: "Ramu"
+                            mobile:
+                                type: string
+                                example: "9908"
+                            comments:
+                                type: string
+                                example: "i am a milkmen"
+                            active:
+                                type: int
+                                example: 1    
+                            
+                            
+        responses:
+            200:
+                description: "status:1 is success; status: 0 is failure;"

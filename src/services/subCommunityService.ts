@@ -41,7 +41,9 @@ export class SubCommunityService {
  async getSubCommunityById(item: any){
        try{
            console.log("In  getSubCommunityById id method");
-           let subCommunityData = await this.subCommunityDAO.findRecord({id : item});
+          // let subCommunityData = await this.subCommunityDAO.findRecord({id : item});
+            let subCommunityData = await this.subCommunityDAO.findRecord({id : item});
+
            let message="Sub Community found";
            if(subCommunityData==undefined)
            message="Sub Community Not found";
@@ -58,6 +60,34 @@ export class SubCommunityService {
            return Promise.reject(error);
        }
    }
+
+   async getSubCommunityByCommunityId(item: any){
+    try{
+        console.log("In  getSubCommunityByCommunityId id method");
+       // let subCommunityData = await this.subCommunityDAO.findRecord({id : item});
+         let subCommunityData = await this.subCommunityDAO.search({community_id: item});
+
+        let message="Sub Community found";
+        if(subCommunityData==undefined)
+        message="Sub Community Not found";
+        
+        let returnData = { 
+            data : subCommunityData,
+            message : message
+        }
+
+        
+         return Promise.resolve(returnData);
+    }catch(error){
+        console.log(error);
+        return Promise.reject(error);
+    }
+}
+
+
+
+
+
 
 
  

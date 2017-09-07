@@ -4,7 +4,7 @@ import {UserBilling} from "./../models/entities/userBillings";
 
 export class UserBillingsDAO {
 
-    private dao: Repository<UserBilling>;
+    public dao: Repository<UserBilling>;
 
     constructor() {
         this.dao = getEntityManager().getRepository(UserBilling);

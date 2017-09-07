@@ -4,7 +4,7 @@ import {HoldRequest} from "./../models/entities/holdRequests";
 
 export class HoldRequestsDAO {
 
-    private dao: Repository<HoldRequest>;
+    public dao: Repository<HoldRequest>;
 
     constructor() {
         this.dao = getEntityManager().getRepository(HoldRequest);

@@ -4,7 +4,7 @@ import {SpecialRequest} from "./../models/entities/specialRequests";
 
 export class SpecialRequestsDAO {
 
-    private dao: Repository<SpecialRequest>;
+    public dao: Repository<SpecialRequest>;
 
     constructor() {
         this.dao = getEntityManager().getRepository(SpecialRequest);

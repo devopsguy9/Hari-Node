@@ -1,9 +1,9 @@
-/user/getUser/{id}:
+/products/{id}:
   get:
     tags:
-      - Users
+      - products
     description:
-        Get a user
+        Get a product
     parameters:
       - name: id
         in: path

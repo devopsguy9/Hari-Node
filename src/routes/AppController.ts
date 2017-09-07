@@ -15,6 +15,7 @@ import {UsersController} from './controllers/usersController';
 import {DwellingController} from './controllers/dwellingController'; 
 import {SubCommunityController} from './controllers/subCommunityController'; 
 import {ProductsController} from './controllers/productsController'; 
+import {UserDwellingController} from './controllers/userDwellingController';
 
 export class AppController{
     private router : Router = Router();
