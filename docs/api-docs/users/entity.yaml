@@ -1,5 +1,5 @@
 /user/{id}:
-  delete:
+  get:
     tags:
       - Users
     description:

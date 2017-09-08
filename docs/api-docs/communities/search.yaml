@@ -1,4 +1,4 @@
-/community/getAllCommunities:
+/community/:
     post:
         tags:
             - Communities

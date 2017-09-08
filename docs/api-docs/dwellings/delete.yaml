@@ -1,9 +1,9 @@
-/dwelling/getDwelling/{id}:
-  get:
+/dwelling/{id}:
+  delete:
     tags:
       - Dwellings
     description:
-        Get a Dwelling
+        Delete a dwelling
     parameters:
       - name: id
         in: path
@@ -12,3 +12,6 @@
     responses:
         200:
             description: "status:1 is success; status: 0 is failure;"
+
+
+

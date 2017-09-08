@@ -1,9 +1,9 @@
-/subCommunity/getAllSubCommunities:
+/subCommunity/:
     post:
         tags:
             - Sub Communities
         description:
-                Get all sub communities 
+                Get all Sub Communities 
         
                             
         responses:

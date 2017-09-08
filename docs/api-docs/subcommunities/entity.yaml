@@ -1,9 +1,9 @@
-/community/getCommunity/{id}:
+/subCommunity/{id}:
   get:
     tags:
-      - Communities
+      - Sub Communities
     description:
-        Get a community
+        Delete a Sub Community
     parameters:
       - name: id
         in: path

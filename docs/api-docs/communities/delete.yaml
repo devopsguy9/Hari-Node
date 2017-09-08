@@ -1,9 +1,9 @@
-/user/{id}:
+/community/{id}:
   delete:
     tags:
-      - Users
+      - Communities
     description:
-        Delete a user
+        Get a community
     parameters:
       - name: id
         in: path

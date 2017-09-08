@@ -1,9 +1,9 @@
-/subCommunity/addSubCommunity:
+/subCommunity/:
     put:
         tags:
             -  Sub Communities
         description:
-             Create a  Sub Community 
+             Create/update a  Sub Community 
         parameters:
           - name: body
             in: body
@@ -13,15 +13,23 @@
                     data:
                         type: object
                         properties:
+                            id:
+                                type: number
+                                example : null
                             name:
                                 type: string
                                 example: "Ramki-tower1"
-                            community_id:
-                                type: int
-                                example: 1
                             active:
                                 type: boolean
-                                example: true
+                                example: true    
+                            community:
+                                type: object
+                                properties: 
+                                   id: 
+                                     type: number
+                                     example : 1
+                                
+                            
                                   
                             
         responses:

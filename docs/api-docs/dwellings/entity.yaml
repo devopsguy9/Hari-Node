@@ -1,9 +1,9 @@
-/user/{id}:
-  delete:
+/dwelling/{id}:
+  get:
     tags:
-      - Users
+      - Dwellings
     description:
-        Delete a user
+        Get a Sub Community
     parameters:
       - name: id
         in: path
@@ -12,3 +12,6 @@
     responses:
         200:
             description: "status:1 is success; status: 0 is failure;"
+
+
+

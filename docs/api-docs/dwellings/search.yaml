@@ -1,9 +1,9 @@
-/dwelling/getAllDwellings:
+/dwelling/:
     post:
         tags:
             - Dwellings
         description:
-                Get all dwellings 
+                Get all dwellings
         
                             
         responses:

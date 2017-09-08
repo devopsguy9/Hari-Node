@@ -1,4 +1,4 @@
-/dwelling/addDwelling:
+/dwelling/:
     put:
         tags:
             -  Dwellings
@@ -13,15 +13,21 @@
                     data:
                         type: object
                         properties:
+                            id:
+                                type: number
+                                example: null
                             name:
                                 type: string
                                 example: "c4567"
                             active:
                                 type: boolean
                                 example: true
-                            sub_community_id:
-                                type: int
-                                example: 1
+                            subCommunity:
+                                type: object
+                                properties: 
+                                  id:
+                                    type: number
+                                    example : 1
                                   
                             
         responses:

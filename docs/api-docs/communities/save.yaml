@@ -1,9 +1,9 @@
-/community/addCommunity:
+/community/:
     put:
         tags:
             - Communities
         description:
-             Create a Community 
+             Create / update a Community 
         parameters:
           - name: body
             in: body
@@ -13,6 +13,9 @@
                     data:
                         type: object
                         properties:
+                            id:
+                                type: number
+                                example : null
                             name:
                                 type: string
                                 example: "Ramki"
