@@ -4,77 +4,49 @@ import { SubCommunityService } from '../../services/subCommunityService';
 
 export class SubCommunityController{
     private router: Router = Router();
-
+    private subCommunityService = new SubCommunityService();
+    
     getRouter():Router{
-        this.router.get('/', async(request: Request,response: Response)=>{
-            console.log("hello");
-            //App.Send(request,response,);
+
+        this.router.post("/", async(request: Request, response: Response) => {
+            //  let reqData= request.body ? request.body.data : {};
+              const result = this.subCommunityService.findAll();
+              App.Send(request, response, result);
+  
+          });
+        
+        this.router.put('/',async(request: Request, response:Response)=> {
+            let subCommunityItem = request.body.data;
+            let result = this.subCommunityService.save(subCommunityItem);
+            App.Send(request, response, result);
+            
+        
         })
+      
+
+        this.router.get('/CommunityId/:id', async(request: Request,response:Response)=>{
+            let subCommunityItem = request.params.id;
+            console.log(subCommunityItem);
+            let result = this.subCommunityService.search(subCommunityItem);
+            App.Send(request,response,result);
+        })
+
+        this.router.get('/:id',async(request: Request, response:Response)=> {
+            const id:any=request.params.id;
+            let result = this.subCommunityService.entity(id);
+            App.Send(request, response, result);
+            
+        
+        })
+
 
       
-        this.router.put('/addSubCommunity',async(request: Request,response:Response)=>{
-            console.log("in add addSubCommunity");
-            let subCommunityItem = request.body.data;
-            console.log(subCommunityItem);
-            const sub_community_service = new SubCommunityService();
-            let result = sub_community_service.saveSubCommunity(subCommunityItem);
-            App.Send(request,response,result);
+        this.router.delete("/:id", async(request:Request,response:Response)=>{
+            const id:any=request.params.id;
+            const result = this.subCommunityService.delete(id);
+            App.Send(request, response, result);
+        });
 
-        })
-
-       this.router.get('/getSubCommunity/:id',async(request: Request,response:Response)=>{
-            console.log("in getSubCommunity");
-            let subCommunityItem = request.params.id;
-            console.log(subCommunityItem);
-           const sub_community_service = new SubCommunityService();
-            let result = sub_community_service.getSubCommunityById(subCommunityItem);
-            App.Send(request,response,result);
-
-        })
-
-        this.router.get('/getSubCommunityByCommunity/:id',async(request: Request,response:Response)=>{
-            console.log("in getSubCommunity");
-            let subCommunityItem = request.params.id;
-            console.log(subCommunityItem);
-           const sub_community_service = new SubCommunityService();
-            let result = sub_community_service.getSubCommunityByCommunityId(subCommunityItem);
-            App.Send(request,response,result);
-
-        })
-
-          this.router.post('/getAllSubCommunities',async(request: Request,response:Response)=>{
-            console.log("in getAllSubCommunities"); 
-           const sub_community_service = new SubCommunityService();
-            let result = sub_community_service.getAllSubCommunities();
-            App.Send(request,response,result);
-
-        })
-
-        this.router.put('/updateSubCommunity/:id',async(request: Request,response:Response)=>{
-            console.log("in updateSubCommunity"); 
-            let sub_community_id =  request.params.id;
-            console.log(sub_community_id)
-            let reqObj = request.body;
-            console.log(reqObj)
-           const sub_community_service = new SubCommunityService();
-            let result = sub_community_service.updateSubCommunity(sub_community_id,reqObj);
-            App.Send(request,response,result);
-
-        })
-
-
-    /*      this.router.get('/deleteUser/:id',async(request: Request,response:Response)=>{
-            console.log("in deleteUser");
-            let userItem = request.params.id;
-            console.log(userItem);
-           const user_service = new UserService();
-            let result = user_service.deleteUserById(userItem);
-            App.Send(request,response,result);
-
-        })
-
-
-*/
 
         return this.router;
     }

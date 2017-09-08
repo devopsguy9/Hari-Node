@@ -4,66 +4,41 @@ import { CommunityService } from '../../services/communityService';
 
 export class CommunityController{
     private router: Router = Router();
+    private communityService = new CommunityService();
 
     getRouter():Router{
-        this.router.get('/', async(request: Request,response: Response)=>{
-            console.log("hello");
-          //  App.Send(request,response,);
+         
+        this.router.put('/',async(request: Request, response:Response)=> {
+            let communityItem = request.body.data;
+            let result = this.communityService.save(communityItem);
+            App.Send(request, response, result);
+            
+        
         })
 
       
-        this.router.put('/addCommunity',async(request: Request,response:Response)=>{
-            console.log("in add user");
-            let communityItem = request.body.data;
-            console.log(communityItem);
-            const community_service = new CommunityService();
-            let result = community_service.saveUser(communityItem);
-            App.Send(request,response,result);
+        this.router.post("/", async(request: Request, response: Response) => {
+            //  let reqData= request.body ? request.body.data : {};
+              const result = this.communityService.findAll();
+              App.Send(request, response, result);
+  
+          });
 
-        })
-
-      this.router.get('/getCommunity/:id',async(request: Request,response:Response)=>{
-            console.log("in getCommunitybyid");
-            let communityItem = request.params.id;
-            console.log(communityItem);
-           const community_service = new CommunityService();
-            let result = community_service.getCommunityById(communityItem);
-            App.Send(request,response,result);
-
-        })
-
-        this.router.post('/getAllCommunities',async(request: Request,response:Response)=>{
-            console.log("in getAllCommunities"); 
-           const community_service = new CommunityService();
-            let result = community_service.getCommunities();
-            App.Send(request,response,result);
-
-        })
-
-         this.router.put('/updateCommunity/:id',async(request: Request,response:Response)=>{
-            console.log("in updateCommunity"); 
-            let community_id =  request.params.id;
-            console.log(community_id)
-            let reqObj = request.body.data;
-            console.log(reqObj)
-           const community_service = new CommunityService();
-            let result = community_service.updateCommunity(community_id,reqObj);
-            App.Send(request,response,result);
-
+          this.router.get('/:id',async(request: Request, response:Response)=> {
+            const id:any=request.params.id;
+            let result = this.communityService.entity(id);
+            App.Send(request, response, result);
+            
+        
         })
 
 
-      /*    this.router.get('/deleteUser/:id',async(request: Request,response:Response)=>{
-            console.log("in deleteUser");
-            let userItem = request.params.id;
-            console.log(userItem);
-           const user_service = new UserService();
-            let result = user_service.deleteUserById(userItem);
-            App.Send(request,response,result);
-
-        })
-
-        */
+      
+        this.router.delete("/:id", async(request:Request,response:Response)=>{
+            const id:any=request.params.id;
+            const result = this.communityService.delete(id);
+            App.Send(request, response, result);
+        });  
 
 
 
