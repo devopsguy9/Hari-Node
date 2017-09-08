@@ -18,6 +18,14 @@ public rep: Repository<Dwelling>;
     }
     
 */
+search(data : any){
+    return this.rep.find(data, {
+        alias: "dwellings", 
+        innerJoinAndSelect: { 
+            "subCommunity": "dwellings.subCommunity",
+        }, 
+    });
+}
 
  
     }

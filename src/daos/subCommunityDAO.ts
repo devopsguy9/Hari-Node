@@ -11,28 +11,16 @@ public rep: Repository<SubCommunity>;
         this.rep = getEntityManager().getRepository(SubCommunity);
     }
     
-   /* findOneById(data:SubCommunity){
-        return this.rep.findOne(data,{
-            alias : "communities",
-            innerJoinAndSelect:{
-                "community_id" :  "communities.id"
-                
-            }
+  
+
+    search(data : any){
+        return this.rep.find(data, {
+            alias: "subcommunity", 
+            innerJoinAndSelect: { 
+                "community": "subcommunity.community",
+            }, 
         });
-    }   */
-
-
-   findAll(){
-        return this.rep.find({},{
-            alias : "sub_communities",
-            innerJoinAndSelect :{
-                "communities": "sub_communities.community_id"
-            }
-
-        })
     }
-
-    
 
 
     
