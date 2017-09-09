@@ -27,10 +27,13 @@ export class UserDwelling{
     @ManyToOne(type=>User)
     users:User;
 
-    @JoinTable({name:"dwelling"})
-    @ManyToMany(type=>Dwelling)
+    @JoinColumn({name:"dwelling"})
+    @ManyToOne(type=>Dwelling,dwelling=>dwelling.userDwellings,{
+        cascadeInsert:true
+    })
     dwellings:Dwelling;
-
+    
+    
     @Column({name:"effective"})
     effective:Date;
 
