@@ -1,4 +1,4 @@
-/userDwelling/addUserDwelling:
+/userDwelling/:
     put:
         tags:
             - User Dwellings
@@ -13,15 +13,26 @@
                     data:
                         type: object
                         properties:
-                            user_id:
-                                type: int
-                                example: 1
-                            dwelling_id:
-                                type: string
-                                example: 1
+                            id:
+                                type: number
+                                example: null
                             effective:
                                 type: date
-                                example: "23-1-7017 08:12:22"
+                                example: "1000-01-01 00:00:00"  
+                            users:
+                                type: object
+                                properties: 
+                                   id: 
+                                     type: number
+                                     example : 1      
+
+                            dwellings:
+                                type: object
+                                properties: 
+                                   id: 
+                                     type: number
+                                     example : 1 
+                            
                             
                             
         responses:
