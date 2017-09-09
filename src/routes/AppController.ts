@@ -47,6 +47,8 @@ export class AppController{
         
         this.router.use('/dwelling',new DwellingController().getRouter());
 
+        this.router.use('/Userdwelling',new UserDwellingController().getRouter());
+
          this.router.use('/subcommunity',new SubCommunityController().getRouter());
 
         this.router.use('/products',new ProductsController().getRouter());

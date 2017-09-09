@@ -14,7 +14,19 @@ public rep: Repository<UserDwelling>;
     }
     
     
- 
+    findAll(){
+        return this.rep.find({},{
+            alias : "userdwelling",
+            innerJoinAndSelect:{
+                "users" : "userdwelling.users",
+                "dwellings" : "userdwelling.dwellings",
+                "subcommunities" : "dwellings.subCommunity",
+                "community" : "subcommunities.community"
+
+
+            }
+        });
+    }
  
     }
 
