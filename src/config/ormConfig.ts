@@ -14,7 +14,7 @@ export class  OrmConfig{
         host: "localhost",
         port: 3306,
         username: "root",
-        password: "root",
+        password: "varaprasad",
         database: "milkman",
         usePool: true
     },

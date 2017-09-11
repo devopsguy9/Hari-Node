@@ -1,9 +1,9 @@
-/supplier/:
+/manufacturers/:
     put:
         tags:
-            - Suppliers
+            - Manufacturers
         description:
-             Create / update suppliers
+             Create / update manufacturers items
         parameters:
           - name: body
             in: body
@@ -18,17 +18,13 @@
                                 example : null
                             name:
                                 type: string
-                                example: "Hariprasad"
-                            mobile:
-                                type: string
-                                example: "8978325778"
-                            comments:
-                                type: string
-                                example: "Best supplier of 2017 :P"                       
+                                example: "sanjeevini"
                             active:
                                 type: boolean
-                                example: true    
-                            
+                                example: false    
+                            comments:
+                                type: string
+                                example: "kfakffisthecommentandreason"
         responses:
             200:
                 description: "status:1 is success; status: 0 is failure;"

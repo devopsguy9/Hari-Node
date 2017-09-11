@@ -23,17 +23,26 @@
                                 type: string
                                 example: "Skimmed milk is sometimes consumed with the intention of reducing or limiting calorie consumption."
                             manufacturer:
-                                type: number
-                                example: "1"
+                              type: object
+                              properties: 
+                                   id:
+                                     type: number
+                                     example : 1
                             product_category_id:
-                                type: number
-                                example: "1"
+                              type: object
+                              properties: 
+                                   id:
+                                     type: number
+                                     example : 2
                             active:
                                 type: boolean
                                 example: true
                             supplier_id:
-                                type: number
-                                example: "1"    
+                              type: object
+                              properties: 
+                                   id:
+                                     type: number
+                                     example : 3  
                             
         responses:
             200:

@@ -1,35 +1,24 @@
 import { getEntityManager, Repository } from "typeorm";
 import {Supplier} from "./../models/entities/suppliers";
+import{BaseDAO} from "../config/baseDAO";
 
 
-export class SuppliersDAO {
-
-    public dao: Repository<Supplier>;
+export class SuppliersDAO extends BaseDAO<Supplier>{
+    
+public rep: Repository<Supplier>;
 
     constructor() {
-        this.dao = getEntityManager().getRepository(Supplier);
+    super(Supplier);
+        this.rep = getEntityManager().getRepository(Supplier);
     }
-
-    search(data: any) {
-        return this.dao.find(data)
-    }
-
-    save(data: Supplier) {
-        return this.dao.persist(data);
-    }
-
-    entity(id: string) {
-        return this.dao.findOneById(id)
-    }
-
-    delete(data: Supplier) {
-        return this.dao.remove([data]);
-    }
-
-    findOne(data: any) {
-        return this.dao.findOne(data)
-    }
+    
 
 }
+
+    
+    
+    
+    
+    
 
 Object.seal(SuppliersDAO);

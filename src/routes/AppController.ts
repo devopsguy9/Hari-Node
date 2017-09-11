@@ -16,6 +16,9 @@ import {DwellingController} from './controllers/dwellingController';
 import {SubCommunityController} from './controllers/subCommunityController'; 
 import {ProductsController} from './controllers/productsController'; 
 import {UserDwellingController} from './controllers/userDwellingController';
+import {ProductSkuPriceController} from './controllers/productSkuPricesController';
+import {ConsumableProductCategoriesController} from './controllers/consumableProductCategoriesControllers';
+import {ManufacturersController} from './controllers/manufacturersController';
 
 export class AppController{
     private router : Router = Router();
@@ -52,6 +55,12 @@ export class AppController{
          this.router.use('/subcommunity',new SubCommunityController().getRouter());
 
         this.router.use('/products',new ProductsController().getRouter());
+
+        this.router.use('/productskuprice',new ProductSkuPriceController().getRouter());
+
+        this.router.use('/consumable',new ConsumableProductCategoriesController().getRouter());
+
+        this.router.use('/manufacturers',new ManufacturersController().getRouter());
         
         return this.router;
     }

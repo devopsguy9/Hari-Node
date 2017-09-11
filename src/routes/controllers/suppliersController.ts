@@ -8,32 +8,41 @@ export class SuppliersController {
         private suppliersService = new SuppliersService();
 
         getRouter():Router{
+            
+            this.router.post("/", async(request: Request, response: Response) => {
+              //  let reqData= request.body ? request.body.data : {};
+                const result = this.suppliersService.findAll();
+                App.Send(request, response, result);
     
-        this.router.post("/", async(request: Request, response: Response) => {
-            let reqData= request.body ? request.body.data : {};
-            const result = this.suppliersService.search(reqData);
-            App.Send(request, response, result);
-
-        });
-        this.router.put("/", async(request: Request, response: Response) => {
-            let reqData= request.body ? request.body.data : null;
-            let result = this.suppliersService.save(reqData);
-            App.Send(request, response, result);
-        });
-
-        this.router.get("/:id", async(request: Request,response:Response)=>{
-            const id:any=request.params.id;
-            const result = this.suppliersService.entity(id);
-            App.Send(request, response, result);
-        });
-
-        this.router.delete("/:id", async(request:Request,response:Response)=>{
-            const id:any=request.params.id;
-            const result = this.suppliersService.delete(id);
-            App.Send(request, response, result);
-        });
-
+            });
+    
+            this.router.put('/',async(request: Request, response:Response)=> {
+                let userItem = request.body.data;
+                let result = this.suppliersService.save(userItem);
+                App.Send(request, response, result);
+                
+            
+            })
+    
+    
+            this.router.get('/:id',async(request: Request, response:Response)=> {
+                const id:any=request.params.id;
+                let result = this.suppliersService.entity(id);
+                App.Send(request, response, result);
+                
+            
+            })
+    
+    
+          
+            this.router.delete("/:id", async(request:Request,response:Response)=>{
+                const id:any=request.params.id;
+                const result = this.suppliersService.delete(id);
+                App.Send(request, response, result);
+            });
+    
+    
+    
             return this.router;
         }
     }
-    

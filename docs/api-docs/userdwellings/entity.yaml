@@ -1,9 +1,9 @@
-/supplier/{id}:
-  delete:
+/userDwelling/{id}:
+  get:
     tags:
-      - Suppliers
+      - User Dwellings
     description:
-        Delete a suppliers
+        Get a User Dwelling
     parameters:
       - name: id
         in: path

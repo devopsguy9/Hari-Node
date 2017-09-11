@@ -1,9 +1,9 @@
-/supplier/{id}:
+/manufacturers/{id}:
   delete:
     tags:
-      - Suppliers
+      - Manufacturers
     description:
-        Delete a suppliers
+        Delete a product manufactured
     parameters:
       - name: id
         in: path

@@ -38,14 +38,48 @@ export class UserDwellingService {
 
 
 
-        async findAll() {
+    async findOneAndAll(item:UserDwelling) {
             try {
-                let data: any = await this.userDwellingDAO.findAll();
-                return Promise.resolve(data)
+                let users = item.users.id;
+                console.log("User id is: ",users);
+                let data = await this.userDwellingDAO.search({users: item.users.id});
+                //console.log(data.toString);
+
+                if(users != null && data.length>0){
+                    console.log("I am just a tester");
+                    let findoneuserdwelling = await this.userDwellingDAO.findAlll(users);
+                    return Promise.resolve(findoneuserdwelling)
+                }else if(users == null) {
+                    
+                        //return Promise.reject({ message: "user Already Exits" });
+                        let findalluserdwellings = await this.userDwellingDAO.findAll();
+                        return Promise.resolve(findalluserdwellings);
+                }
+            }
+             catch (error) {
+                return Promise.reject(error);
+            }
+        }
+
+        async entity(id: any) {
+            try {
+                let data: any = await this.userDwellingDAO.entity(id);
+                return Promise.resolve(data);
             } catch (error) {
                 return Promise.reject(error);
             }
         }
+
+        
+
+        // async findAll() {
+        //     try {
+        //         let data: any = await this.userDwellingDAO.findAll();
+        //         return Promise.resolve(data)
+        //     } catch (error) {
+        //         return Promise.reject(error);
+        //     }
+        // }
 
 
 }

@@ -16,7 +16,7 @@ export class UsersService {
     
     async save(item: User) {
         try {
-            let data = await this.userDAO.search({phone: item.phone});
+            let data = await this.userDAO.search({name: item.name});
                 if(item.id!=null && data.length>0){
                     let userData : any = await this.userDAO.save(item);
                     let returnData = {
@@ -25,7 +25,7 @@ export class UsersService {
                     }
                     return Promise.resolve(returnData);
                 } else if (item.id == null && data.length > 0) {
-                    return Promise.reject({ message: "Phone number Already Exits" });
+                    return Promise.reject({ message: "user name Already Exits" });
                 }else {
                     let updateUser = await this.userDAO.save(item);
                         return Promise.resolve(updateUser);

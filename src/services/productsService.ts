@@ -11,60 +11,71 @@ export class ProductsService {
 
     }
 
-    async findOneById(id) {
-        try {
-            let data: any = await this.productsDao.findOneById(id);
-            return Promise.resolve(data);
-        } catch (error) {
-            return Promise.reject(error);
-        }
-    }
-
-    async search(reqData: any) {
-        try {
-            let data: any = await this.productsDao.search(reqData);
-            return Promise.resolve(data)
-        } catch (error) {
-            return Promise.reject(error);
-        }
-    }
-
     async save(item: Product) {
         try {
-            if (this.validate(item)) {
-                let user_billingsData: any = await this.productsDao.save(item);
+            let data = await this.productsDao.search({name: item.name});
+                if(item.id!=null && data.length>0){
+                    let userData : any = await this.productsDao.save(item);
+                    let returnData = {
+                        id: item.id,
+                        message: "Updated Successfully"
+                    }
+                    return Promise.resolve(returnData);
+                } else if (item.id == null && data.length > 0) {
+                    return Promise.reject({ message: "Phone number Already Exits" });
+                }else {
+                    let updateUser = await this.productsDao.save(item);
+                        return Promise.resolve(updateUser);
+                }
+            }
+                  catch (error) {
+                    return Promise.reject(error);
+                    }
+        
+        }
+
+        async entity(id: any) {
+            try {
+                let data: any = await this.productsDao.entity(id);
+                return Promise.resolve(data);
+            } catch (error) {
+                return Promise.reject(error);
+            }
+        }
+
+
+        async delete(id: any) {
+            try {
+                let data: Product = (await this.productsDao.entity(id))
+                data.active = false;
+                let result: any = await this.productsDao.save(data);
                 let returnData = {
-                    id: item.id,
-                    message: "Saved Successfully"
+                    id: id,
+                    message: "Removed Successfully"
                 }
                 return Promise.resolve(returnData);
-            } else {
-                let returnData = {
-                    message: "Please enter proper values."
-                }
-                return Promise.reject(returnData);
+            } catch (error) {
+                return Promise.reject(error);
             }
-
-        } catch (error) {
-            return Promise.reject(error);
         }
-    }
 
-    async delete(id: any) {
-        try {
-            let data: Product = (await this.productsDao.findOneById(id))
-            let result: any = await this.productsDao.delete(data);
-            let returnData = {
-                id: id,
-                message: "Removed Successfully"
+
+        async findAll() {
+            try {
+                let data: any = await this.productsDao.findAll();
+                return Promise.resolve(data)
+            } catch (error) {
+                return Promise.reject(error);
             }
-            return Promise.resolve(returnData);
-        } catch (error) {
-            return Promise.reject(error);
         }
-    }
 
-    async validate(item: Product) {
-        return true;
-    }
+
+
+
+
+
+
+
+
+  
 }

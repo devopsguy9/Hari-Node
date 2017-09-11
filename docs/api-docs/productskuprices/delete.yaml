@@ -1,9 +1,9 @@
-/supplier/{id}:
+/productskuprice/{id}:
   delete:
     tags:
-      - Suppliers
+      - Productskuprice
     description:
-        Delete a suppliers
+        Delete a Productskuprice
     parameters:
       - name: id
         in: path

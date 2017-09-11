@@ -1,9 +1,9 @@
 /supplier/{id}:
   get:
     tags:
-      - suppliers
+      - Suppliers
     description:
-        Get a suppliers
+        Get a supplier
     parameters:
       - name: id
         in: path

@@ -1,9 +1,9 @@
-/supplier/:
+/consumable/:
     put:
         tags:
-            - Suppliers
+            -  Consumable Product Categories
         description:
-             Create / update suppliers
+             Create a  Consumable Product Categories 
         parameters:
           - name: body
             in: body
@@ -15,19 +15,14 @@
                         properties:
                             id:
                                 type: number
-                                example : null
+                                example: null
                             name:
                                 type: string
-                                example: "Hariprasad"
-                            mobile:
-                                type: string
-                                example: "8978325778"
-                            comments:
-                                type: string
-                                example: "Best supplier of 2017 :P"                       
+                                example: "Milk"
                             active:
                                 type: boolean
-                                example: true    
+                                example: true
+                                  
                             
         responses:
             200:
