@@ -1,9 +1,9 @@
 /products/:
     put:
         tags:
-            -  products
+            - Products
         description:
-             Create a  product 
+             Create / update Products
         parameters:
           - name: body
             in: body
@@ -13,25 +13,28 @@
                     data:
                         type: object
                         properties:
+                            id:
+                                type: number
+                                example : null
                             name:
                                 type: string
-                                example: "Heritage cow milk"
+                                example: "Skimmed Milk"
                             description:
                                 type: string
-                                example: "This is a very good milk rich in fat"
-                            manufacture_id:
-                                type: int
-                                example : 1
+                                example: "Skimmed milk is sometimes consumed with the intention of reducing or limiting calorie consumption."
+                            manufacturer:
+                                type: number
+                                example: "1"
                             product_category_id:
-                                type: int
-                                example : 1
+                                type: number
+                                example: "1"
                             active:
-                                 type: boolean
-                                 example: true
-                            supplier_id: 
-                                 type: int
-                                 example: 1
-                             
+                                type: boolean
+                                example: true
+                            supplier_id:
+                                type: number
+                                example: "1"    
+                            
         responses:
             200:
                 description: "status:1 is success; status: 0 is failure;"

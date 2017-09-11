@@ -1,9 +1,9 @@
 /products/{id}:
   delete:
     tags:
-      - products
+      - Products
     description:
-      delete.
+        Delete a product
     parameters:
       - name: id
         in: path

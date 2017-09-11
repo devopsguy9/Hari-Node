@@ -1,7 +1,7 @@
 /products/{id}:
   get:
     tags:
-      - products
+      - Products
     description:
         Get a product
     parameters:
