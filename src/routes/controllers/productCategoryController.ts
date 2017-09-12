@@ -1,6 +1,6 @@
 import { Router,Request,Response } from "express";
 import { App } from '../../utils/App';
-import { ProductCategoryService } from '../../services/productCategoryService';
+import { ProductCategoryService } from '../../services/ProductCategoryService';
 
 export class ProductCategoryController{
     private router: Router = Router();
