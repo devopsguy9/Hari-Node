@@ -77,7 +77,7 @@ app.all('*', function (req, res, next) {
 
 app.get("/", (request: express.Request, response: express.Response) => {
     response.json({
-        name: "Thanks for your interest please stay tuned...:|"
+        name: "Milkman Under Development...:|"
     })
 });
 
