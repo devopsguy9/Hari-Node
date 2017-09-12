@@ -14,6 +14,7 @@ import {SuppliersController} from './controllers/suppliersController';
 import {UsersController} from './controllers/usersController'; 
 import {DwellingController} from './controllers/dwellingController'; 
 import {SubCommunityController} from './controllers/subCommunityController'; 
+import {ProductCategoryController} from './controllers/productCategoryController'; 
 import {ProductsController} from './controllers/productsController'; 
 import {UserDwellingController} from './controllers/userDwellingController';
 import {ProductSkuPriceController} from './controllers/productSkuPricesController';
@@ -61,6 +62,8 @@ export class AppController{
         this.router.use('/consumable',new ConsumableProductCategoriesController().getRouter());
 
         this.router.use('/manufacturers',new ManufacturersController().getRouter());
+
+        this.router.use('/productCategory',new ProductCategoryController().getRouter());
         
         return this.router;
     }
