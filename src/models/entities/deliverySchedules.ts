@@ -1,5 +1,5 @@
 import { UserBilling } from './userBillings';
-import { ProductSku } from './productSkus';
+import { ProductSku } from './productSku';
 import { UserDwelling } from './userDwellings';
 import { Column, Entity, JoinColumn, JoinTable, ManyToMany, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import {SubCommunity} from './subCommunities';
@@ -17,16 +17,16 @@ export class DeliverySchedule{
     @ManyToOne(type=>UserDwelling)
     user_dwellings:UserDwelling;
 
-    @JoinTable({name:"product_skus"})
-    @ManyToMany(type=>ProductSku)
-    product_sku_id:ProductSku;
+    // @JoinTable({name:"product_skus"})
+    // @ManyToMany(type=>ProductSku)
+    // product_sku_id:ProductSku;
 
     @Column({name:"quantity"})
     quantity:number;
 
-    // @JoinColumn({name:"user_billing_id"})
-    // @OneToMany(type=>user_billings,user_billings=>user_billings.user_b)
-    // user_billing_id:number;
+
+    @OneToMany(type=>UserBilling,user_billings=>user_billings.delivery_schedules)
+    user_billing:UserBilling[];
 
     @Column({name:"supplier_id"})
     supplier_id:number;

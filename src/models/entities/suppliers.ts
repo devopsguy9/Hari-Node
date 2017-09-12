@@ -28,12 +28,12 @@ export class Supplier{
     @Column({name:"active"})
     active:boolean;
 
-    // @OneToMany(type=>DailyOrderSheet,daily_order_sheets=>
-    // daily_order_sheets.suppliers,{
-    //     cascadeInsert:true,
-    //     cascadeUpdate:true
-    // })
-    // dailyordersheets:DailyOrderSheet[];
+    @OneToMany(type=>DailyOrderSheet,daily_order_sheets=>
+    daily_order_sheets.suppliers,{
+        cascadeInsert:true,
+        cascadeUpdate:true
+    })
+    dailyordersheets:DailyOrderSheet[];
 
     @OneToMany(type=>UserBilling,user_billings=>user_billings.suppliers,{
         cascadeInsert:true,

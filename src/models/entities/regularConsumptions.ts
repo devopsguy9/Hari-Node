@@ -1,4 +1,4 @@
-import { ProductSku } from './productSkus';
+import { ProductSku } from './productSku';
 import { Column, Entity, JoinColumn, JoinTable, ManyToMany, PrimaryGeneratedColumn } from 'typeorm';
 
 
@@ -10,9 +10,9 @@ export class RegularConsumption{
     @Column({name:"user_dwelling_id"})
     user_dwelling_id:number;
 
-    @JoinTable({name:"product_skus"})
-    @ManyToMany(type=>ProductSku)
-    product_skus:ProductSku;
+    // @JoinTable({name:"product_skus"})
+    // @ManyToMany(type=>ProductSku)
+    // product_skus:ProductSku;
 
     @Column({name:"quantity"})
     quantity:number;

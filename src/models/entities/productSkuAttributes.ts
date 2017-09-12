@@ -7,8 +7,9 @@ export class ProductSkuAttribute{
     @PrimaryGeneratedColumn({name:"id"})
     id:number;
 
-    @Column({name:"product_sku_id"})
-    product_sku_id:number;
+
+    // @Column({name:"product_sku_id"})
+    // product_sku_id:number;
 
     @JoinColumn({name:"product_attribute"})
     @OneToOne(type=>ProductAttribute)

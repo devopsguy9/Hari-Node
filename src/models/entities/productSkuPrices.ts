@@ -6,8 +6,8 @@ export class ProductSkuPrice{
     @PrimaryGeneratedColumn({name:"id"})
     id:number;
 
-    @Column({name:"product_sku_id"})
-    product_sku_id:number;
+    // @Column({name:"product_sku_id"})
+    // product_sku_id:number;
 
     @Column({name:"price"})
     price:number;

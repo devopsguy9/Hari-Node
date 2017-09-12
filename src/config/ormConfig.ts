@@ -19,7 +19,7 @@ export class  OrmConfig{
         usePool: true
     },
     entities: ["dist/models/entities/*.js"],
-    autoSchemaSync: false
+    autoSchemaSync: true
 };
     
     constructor(){

@@ -1,7 +1,8 @@
+import { DeliverySchedule } from './deliverySchedules';
 import { Supplier } from './suppliers';
 import { SpecialRequest } from './specialRequests';
 import { HoldRequest } from './holdRequests';
-import { ProductSku } from './productSkus';
+import { ProductSku } from './productSku';
 import {Entity,Column,PrimaryGeneratedColumn,OneToMany,ManyToOne,JoinColumn,OneToOne} from 'typeorm';
 import {UserDwelling} from './userDwellings';
 
@@ -18,8 +19,10 @@ export class UserBilling{
     @ManyToOne(type=>Supplier)
     suppliers:Supplier;
 
-     @JoinColumn({name:"product_skues_id"})
-     @OneToMany(type=>ProductSku,product_skus=>product_skus.user_billings)
+    @OneToMany(type=>ProductSku,product_skus=>product_skus.user_billings,{
+        cascadeInsert:true,
+        cascadeUpdate:true
+    })
      product_skus:ProductSku[];
 
     @Column({name:"day_price"})
@@ -32,6 +35,10 @@ export class UserBilling{
     @JoinColumn({name:"user_dwelling"})
     @ManyToOne(type=>UserDwelling)
     user_dwellings:UserDwelling;
+
+    @JoinColumn({name:"delivery_schedules"})
+    @ManyToOne(type=>DeliverySchedule)
+    delivery_schedules:DeliverySchedule[];
 
     @JoinColumn({name:"hold_request"})
     @OneToOne(type=>HoldRequest)

@@ -1,5 +1,5 @@
 import { SpecialRequest } from './specialRequests';
-import { ProductSku } from './productSkus';
+import { ProductSku } from './productSku';
 import { Column, Entity, JoinColumn, JoinTable, ManyToMany, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
 
@@ -12,9 +12,9 @@ export class SpecialRequestDetail{
     @ManyToOne(type=>SpecialRequest)
     special_requests:SpecialRequest;
 
-    @JoinTable({name:"product_skus"})
-    @ManyToMany(type=>ProductSku)
-    product_skus:ProductSku;
+    // @JoinTable({name:"product_skus"})
+    // @ManyToMany(type=>ProductSku)
+    // product_skus:ProductSku;
 
     @Column({name:"quantity"})
     quantity:number;

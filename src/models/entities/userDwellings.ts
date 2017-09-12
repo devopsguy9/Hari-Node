@@ -61,12 +61,8 @@ export class UserDwelling{
     })
     userbillings:UserBilling[];
 
-    // @JoinColumn({name:"regular_consumptions_id"})
-    // @ManyToOne(type=>regular_consumptions)
-    // regular_consumptions_id:number;
-
-    // @JoinColumn({name:"supplier_user_dwelling_mappers"})
-    // @ManyToMany(type=>supplier_user_dwelling_mappers)
-    // supplier_user_dwelling_mappers:number;
+    @JoinColumn({name:"regular_consumptions_id"})
+    @ManyToOne(type=>RegularConsumption)
+    regular_consumptions:RegularConsumption[];
 
 }

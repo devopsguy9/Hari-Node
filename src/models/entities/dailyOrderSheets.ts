@@ -1,5 +1,5 @@
 import { Supplier } from './suppliers';
-import { ProductSku } from './productSkus';
+import { ProductSku } from './productSku';
 import { Manufacturer } from './manufacturers';
 import { Column, Entity, JoinColumn, JoinTable, ManyToMany, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
@@ -13,9 +13,9 @@ export class DailyOrderSheet{
     @ManyToOne(type=>Manufacturer)
     manufacturers:Manufacturer;
 
-    @JoinTable({name:"product_sku"})
-    @ManyToMany(type=>ProductSku)
-    product_skus:ProductSku;
+    // @JoinTable({name:"product_sku"})
+    // @ManyToMany(type=>ProductSku)
+    // product_skus:ProductSku;
 
     @Column({name:"order_date"})
     order_date:Date;

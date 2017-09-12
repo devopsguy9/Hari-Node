@@ -1,6 +1,6 @@
 import { Manufacturer } from './manufacturers';
-import {Entity,Column,PrimaryGeneratedColumn,OneToMany,ManyToOne,JoinColumn} from 'typeorm';
-import {ProductSku} from './productSkus'
+import {Entity,Column,PrimaryGeneratedColumn,ManyToOne,JoinColumn,OneToMany} from 'typeorm';
+import {ProductSku} from './productSku';
 
 @Entity("products")
 export class Product{
@@ -32,10 +32,10 @@ export class Product{
     @Column({name:"supplier_id"})
     supplier_id:number;
 
-//OneToMany(type=>ProductSku,product_skus=>product_skus.products_id,{
-   //     cascadeInsert:true,
-  //      cascadeUpdate:true
-  //  })
-  //  product_skus:ProductSku[];
+    @OneToMany(type=>ProductSku,product_skus=>product_skus.products,{
+       cascadeInsert:true,
+       cascadeUpdate:true
+    })
+    product_skus:ProductSku[];
 
 }

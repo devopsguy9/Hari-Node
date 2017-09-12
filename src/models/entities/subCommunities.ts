@@ -46,11 +46,14 @@ export class SubCommunity{
         length:128
     })
     name:string;
+
     @JoinColumn({name:"community_id"})
     @ManyToOne(type=>Community)
     community:Community;
+
     @Column({name:"active"})
     active:boolean;
+    
     @OneToMany(type=>Dwelling,dwellings=>dwellings.subCommunity,{
         cascadeInsert:true,
         cascadeUpdate:true
