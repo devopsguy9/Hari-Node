@@ -3,7 +3,7 @@
 import { App } from "./../utils/App";
 
 import { ProductSkuePricesDAO } from '../daos/productSkuPricesDAO';
-import { ProductSkuPrice } from "../models/entities/ProductSkuPrices";
+import { ProductSkuPrice } from "../models/entities/productSkuPrices";
 
 
 export class ProductSkuPriceService {
