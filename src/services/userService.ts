@@ -4,13 +4,18 @@ import { App } from "./../utils/App";
 
 import { UsersDAO } from '../daos/usersDAO';
 import { User } from "../models/entities/users";
+import { UserDwellingDAO } from '../daos/userDwellingsDAO';
+import { UserDwelling } from "../models/entities/userDwellings";
+
 
 
 export class UsersService {
     private userDAO: UsersDAO;
+    private userDwellingDAO: UserDwellingDAO;
     
     constructor() {
         this.userDAO = new UsersDAO();
+        this.userDwellingDAO = new UserDwellingDAO();
         
     }
     
@@ -26,8 +31,16 @@ export class UsersService {
                     return Promise.resolve(returnData);
                 } else if (item.id == null && data.length > 0) {
                     return Promise.reject({ message: "user name Already Exits" });
-                }else {
+                }else if(item.id == null){
+                    console.log("hello");
                     let updateUser = await this.userDAO.save(item);
+                    console.log(updateUser)
+                    let use : any = {
+                        id: null,
+                        users:{id:updateUser.id}
+                    };
+                    let updateUserDwelling = await this.userDwellingDAO.save(use);
+                    console.log(updateUserDwelling);
                         return Promise.resolve(updateUser);
                 }
             }

@@ -61,8 +61,8 @@ export class UserDwelling{
     })
     userbillings:UserBilling[];
 
-    @JoinColumn({name:"regular_consumptions_id"})
-    @ManyToOne(type=>RegularConsumption)
-    regular_consumptions:RegularConsumption[];
+    // @JoinColumn({name:"regular_consumptions_id"})
+    // @ManyToOne(type=>RegularConsumption)
+    // regular_consumptions:RegularConsumption[];
 
 }

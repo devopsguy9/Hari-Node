@@ -20,6 +20,7 @@ import {UserDwellingController} from './controllers/userDwellingController';
 import {ProductSkuPriceController} from './controllers/productSkuPricesController';
 import {ConsumableProductCategoriesController} from './controllers/consumableProductCategoriesControllers';
 import {ManufacturersController} from './controllers/manufacturersController';
+import {ProductSkuController} from './controllers/productSkuController';
 
 export class AppController{
     private router : Router = Router();
@@ -64,6 +65,8 @@ export class AppController{
         this.router.use('/manufacturers',new ManufacturersController().getRouter());
 
         this.router.use('/productCategory',new ProductCategoryController().getRouter());
+        
+        this.router.use('/productSkues',new ProductSkuController().getRouter());
         
         return this.router;
     }

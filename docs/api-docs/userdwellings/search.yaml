@@ -14,12 +14,9 @@
                     data:
                         type: object
                         properties:
-                            users:
-                                type: object
-                                properties:
-                                    id:
-                                        type: number
-                                        example: "null or user id"                       
+                            id:
+                                type: number
+                                example: "null or user id"                       
         responses:
             200:
                 description: "status:1 is success; status: 0 is failure;"

@@ -40,7 +40,7 @@ export class UserDwellingController{
 
         this.router.post("/", async(request: Request, response: Response) => {
               let reqData= request.body.data ? request.body.data : {};
-              const result = this.userDwellingService.findOneAndAll(reqData);
+              const result = this.userDwellingService.reverse(reqData);
               App.Send(request, response, result);
   
           });

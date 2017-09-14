@@ -12,7 +12,16 @@ public rep: Repository<Product>;
     }
     
     
-  
+    entity(id){
+        return this.rep.findOneById(id,{
+            alias : "product",
+            innerJoinAndSelect:{
+                "manufacturers" : "product.manufacturers",
+                "product_skus" : "userdwelling.product_skus"
+
+            }
+        });
+    }
 
  
     }

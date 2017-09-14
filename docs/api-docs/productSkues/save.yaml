@@ -1,9 +1,9 @@
-/userDwelling/:
+/productSkues/:
     put:
         tags:
-            - User Dwellings
+            -  Product Skues
         description:
-             Create User dwellings
+             Create/update a  product Skue
         parameters:
           - name: body
             in: body
@@ -15,25 +15,22 @@
                         properties:
                             id:
                                 type: number
-                                example: null
-                            effective:
-                                type: date
-                                example: "1000-01-01 00:00:00"  
-                            users:
+                                example : null
+                            name:
+                                type: string
+                                example: "Skimmed thirty percent low fat"
+                            active:
+                                type: boolean
+                                example: true    
+                            products_id:
                                 type: object
                                 properties: 
                                    id: 
                                      type: number
-                                     example : 1      
-
-                            dwellings:
-                                type: object
-                                properties: 
-                                   id: 
-                                     type: number
-                                     example : 1 
+                                     example : 1
+                                
                             
-                            
+                                  
                             
         responses:
             200:

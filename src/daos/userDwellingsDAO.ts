@@ -21,7 +21,7 @@ public rep1: Repository<User>;
     findAll(){
         return this.rep.find({},{
             alias : "userdwelling",
-            innerJoinAndSelect:{
+            leftJoinAndSelect:{
                 "users" : "userdwelling.users",
                 "dwellings" : "userdwelling.dwellings",
                 "subcommunities" : "dwellings.subCommunity",
@@ -35,7 +35,7 @@ public rep1: Repository<User>;
     entity(id){
         return this.rep.findOneById(id,{
             alias : "userdwelling",
-            innerJoinAndSelect:{
+            leftJoinAndSelect:{
                 "users" : "userdwelling.users",
                 "dwellings" : "userdwelling.dwellings",
                 "subcommunities" : "dwellings.subCommunity",
@@ -46,18 +46,31 @@ public rep1: Repository<User>;
         });
     }
 
-    findAlll(id){
-        return this.rep1.findOneById(id,{
-            alias : "user",
+    right(id){
+        return this.rep.findOneById(id,{
+            alias:"userdwelling",
             innerJoinAndSelect:{
-                "user_dwelling" : "user.user_dwellings",
-                "dwellings" : "user_dwelling.dwellings",
-                "sub_communities" : "dwellings.subCommunity",
-                "community" : "sub_communities.community"
-
+               "dwellings":"userdwelling.dwellings" 
             }
-        });
+        })
     }
+
+
+    // findEmpty(id){
+    //     return this.rep.findOneById(id,{
+    //         alias:"user",
+    //         innerJoinAndSelect:{
+    //             "user_dwelling":"user.user_dwellings",
+    //             "holdrequests":"user.holdrequests",
+    //             "dwellings" : "userdwelling.dwellings",
+    //             "sub_communities" : "dwellings.subCommunity",
+    //             "community" : "sub_communities.community"
+
+    //             // "sub_communities" : "dwellings.subCommunity",
+    //             // "community" : "sub_communities.community"
+    //         }
+    //     });
+    // }
    
 }
 

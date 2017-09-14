@@ -39,7 +39,7 @@ export class SubCommunityService {
                 let returnData = {
                     subCommunities : data
                 }
-                return Promise.resolve(returnData);
+                return Promise.resolve(data);
                 
             }catch(error){
                 return Promise.reject(error);

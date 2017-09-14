@@ -43,7 +43,7 @@ export class DwellingService {
                 let returnData = {
                     dwellings : data
                 }
-                return Promise.resolve(returnData);
+                return Promise.resolve(data);
                 
             }catch(error){
                 return Promise.reject(error);
