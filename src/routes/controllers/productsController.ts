@@ -9,20 +9,20 @@ export class ProductsController {
 
         getRouter():Router{
             
-            this.router.put("/", async(request: Request, response: Response) => {
+            this.router.post("/", async(request: Request, response: Response) => {
                let reqData=  request.body.data;
-                const result = this.productsService.save(reqData);
+                const result = this.productsService.findAll();
                 App.Send(request, response, result);
     
             });
     
-            // this.router.put('/',async(request: Request, response:Response)=> {
-            //     let userItem = request.body.data;
-            //     let result = this.productsService.save(userItem);
-            //     App.Send(request, response, result);
+            this.router.put('/',async(request: Request, response:Response)=> {
+                let userItem = request.body.data;
+                let result = this.productsService.save(userItem);
+                App.Send(request, response, result);
                 
             
-            // })
+            })
     
     
             this.router.get('/:id',async(request: Request, response:Response)=> {
@@ -35,11 +35,11 @@ export class ProductsController {
     
     
           
-            // this.router.delete("/:id", async(request:Request,response:Response)=>{
-            //     const id:any=request.params.id;
-            //     const result = this.productsService.delete(id);
-            //     App.Send(request, response, result);
-            // });
+            this.router.delete("/:id", async(request:Request,response:Response)=>{
+                const id:any=request.params.id;
+                const result = this.productsService.delete(id);
+                App.Send(request, response, result);
+            });
     
     
     

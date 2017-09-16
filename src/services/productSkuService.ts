@@ -17,7 +17,7 @@ export class ProductSkuService {
     async save(item: ProductSku) {
         try {
            console.log("In try" + item);
-            let data = await this.productSkuesDAO.search({name: item.name});
+            let data = await this.productSkuesDAO.search({id: item.id});
                 if(item.id!=null && data.length>0){
                     let productSkuesData : any = await this.productSkuesDAO.save(item);
                     let returnData = {

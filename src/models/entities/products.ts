@@ -1,3 +1,5 @@
+import { Supplier } from './suppliers';
+import { ProductCategory } from './productCategories';
 import { Manufacturer } from './manufacturers';
 import {Entity,Column,PrimaryGeneratedColumn,ManyToOne,JoinColumn,OneToMany} from 'typeorm';
 import {ProductSku} from './productSku';
@@ -21,21 +23,21 @@ export class Product{
 
     @JoinColumn({name:"manufacturer"})
     @ManyToOne(type=>Manufacturer)
-    manufacturers:Manufacturer;
+    manufacturer:Manufacturer;
 
-    @Column({name:"product_category_id"})
-    product_category_id:number;
+
+    @JoinColumn({name:"product_category_id"})
+    @ManyToOne(type=>ProductCategory)
+    product_category_id:ProductCategory;
 
     @Column({name:"active"})
     active:boolean;
 
-    @Column({name:"supplier_id"})
-    supplier_id:number;
+    @JoinColumn({name:"supplier_id"})
+    @ManyToOne(type=>Supplier)
+    supplier_id:Supplier;
 
-    @OneToMany(type=>ProductSku,product_skus=>product_skus.products,{
-       cascadeInsert:true,
-       cascadeUpdate:true
-    })
+    @OneToMany(type=>ProductSku,product_skus=>product_skus.products)
     product_skus:ProductSku[];
 
 }

@@ -1,3 +1,4 @@
+import { ProductSku } from './productSku';
 import { ProductAttribute } from './productAttributes';
 import { Column, Entity, JoinColumn, ManyToOne, OneToMany, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
 
@@ -8,8 +9,9 @@ export class ProductSkuAttribute{
     id:number;
 
 
-    // @Column({name:"product_sku_id"})
-    // product_sku_id:number;
+    @JoinColumn({name:"product_sku_id"})
+    @OneToOne(type=>ProductSku)
+    product_sku_id:ProductSku;
 
     @JoinColumn({name:"product_attribute"})
     @OneToOne(type=>ProductAttribute)

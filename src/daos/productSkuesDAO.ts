@@ -11,9 +11,10 @@ export class ProductSkuesDAO extends BaseDAO<ProductSku>{
         }
         findAll(){
             return this.rep.find({},{
-                alias : "productskues",
-                innerJoinAndSelect:{
-                    "products" : "productskues.products_id",
+                alias : "product_skus",
+                leftJoinAndSelect:{
+                    "products" : "product_skus.products",
+                    "product_sku_prices":"product_skus.product_sku_prices"
                     
                 }
     
@@ -22,9 +23,10 @@ export class ProductSkuesDAO extends BaseDAO<ProductSku>{
         
         entity(id: any) {
             return this.rep.findOneById(id,{
-                alias: "productskues",
-                innerJoinAndSelect: {
-                    "products" : "productskues.products_id",
+                alias: "product_skus",
+                leftJoinAndSelect: {
+                    "products" : "productskus.products",
+                    "product_sku_prices":"product_skus.product_sku_prices"
     
                    
                 },  

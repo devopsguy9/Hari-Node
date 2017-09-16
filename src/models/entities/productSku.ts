@@ -1,4 +1,5 @@
-import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { ProductSkuPrice } from './productSkuPrices';
+import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn ,OneToMany,OneToOne} from 'typeorm';
 import {UserBilling} from './userBillings';
 import {Product} from './products';
 
@@ -17,8 +18,12 @@ export class ProductSku{
     @ManyToOne(type=>Product)
     products:Product;
 
-    @JoinColumn({name:"user_billings"})
-    @ManyToOne(type=>UserBilling)
+    //@Column({name:"user_billings"})
+    @OneToMany(type=>UserBilling,user_billings=>user_billings.product_skus)
     user_billings:UserBilling;
+
+  
+    @OneToOne(type=>ProductSkuPrice,product_sku_prices=>product_sku_prices.product_sku_id)
+    product_sku_prices:ProductSkuPrice;
 
 }

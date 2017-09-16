@@ -19,10 +19,8 @@ export class UserBilling{
     @ManyToOne(type=>Supplier)
     suppliers:Supplier;
 
-    @OneToMany(type=>ProductSku,product_skus=>product_skus.user_billings,{
-        cascadeInsert:true,
-        cascadeUpdate:true
-    })
+    @JoinColumn({name:"product_skus"})
+    @ManyToOne(type=>ProductSku)
      product_skus:ProductSku[];
 
     @Column({name:"day_price"})

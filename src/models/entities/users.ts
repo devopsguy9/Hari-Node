@@ -36,16 +36,10 @@ export class User{
         length:100
     })
     salt:string;
-    @OneToMany(type=>HoldRequest,hold_requests=>hold_requests.users,{
-        cascadeInsert:true,
-        cascadeUpdate:true
-    })
+    @OneToMany(type=>HoldRequest,hold_requests=>hold_requests.users)
     holdrequests:HoldRequest[];
 
-    @OneToMany(type=>UserDwelling,user_dwelling=>user_dwelling.users,{
-        cascadeInsert:true,
-        cascadeUpdate:true
-    })
+    @OneToMany(type=>UserDwelling,user_dwelling=>user_dwelling.users)
     user_dwellings:UserDwelling[];
 
     @Column({

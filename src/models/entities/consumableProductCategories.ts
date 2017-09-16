@@ -17,10 +17,7 @@ export class ConsumableProductCategory{
     @Column({name:"active"})
     active:boolean;
 
-    @OneToMany(type=>ProductCategory,product_categories=>product_categories.consumable_product_categories,{
-        cascadeInsert:true,
-        cascadeUpdate:true
-    })
+    @OneToMany(type=>ProductCategory,product_categories=>product_categories.consumable_product_categories)
     products:Product[];
 
 }

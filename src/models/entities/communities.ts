@@ -96,8 +96,7 @@ export class Community{
     country:string;
     @Column({name:"pincode"})
     pincode:number;
-    @OneToMany(type=>SubCommunity,sub_communities=>sub_communities.community,{
-        cascadeInsert:true
-    })
+    
+    @OneToMany(type=>SubCommunity,sub_communities=>sub_communities.community)
     subcommunities:SubCommunity[];
 }

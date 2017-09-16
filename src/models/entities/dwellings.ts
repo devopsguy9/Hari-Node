@@ -40,10 +40,7 @@ export class Dwelling{
     })
     name:string;
 
-    @OneToMany(type=>UserDwelling,user_dwelling=>user_dwelling.dwellings,{
-        cascadeInsert:true,
-        cascadeUpdate:true
-    })
+    @OneToMany(type=>UserDwelling,user_dwelling=>user_dwelling.dwellings)
     userDwellings:UserDwelling[];
 
     @JoinColumn({name:"sub_community"})

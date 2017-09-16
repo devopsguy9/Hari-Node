@@ -21,4 +21,7 @@ export class ProductCategory{
     @Column({name:"active"})
     active:boolean;
 
+    @OneToMany(type=>Product,product_id=>product_id.product_category_id)
+    products_id : Product[];
+
 }

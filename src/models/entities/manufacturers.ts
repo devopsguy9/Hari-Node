@@ -29,10 +29,7 @@ export class Manufacturer{
     })
     daily_order_sheets:DailyOrderSheet[];
 
-    @OneToMany(type=>Product,products=>products.manufacturers,{
-        cascadeInsert:true,
-        cascadeUpdate:true
-    })
+    @OneToMany(type=>Product,products=>products.manufacturer)
     products:Product[];
 
 }

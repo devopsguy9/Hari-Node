@@ -1,31 +1,34 @@
+
+
 import { App } from "./../utils/App";
-import { Product } from "./../models/entities/products";
-import { ProductsDAO } from "./../daos/productsDao";
 
-export class ProductsService {
-    private productsDao: ProductsDAO;
+import { ProductSkuAttributeDAO } from '../daos/productSkuAttributesDAO';
+import { ProductSkuAttribute } from "../models/entities/productSkuAttributes";
 
 
+export class ProductSkuAttributesService {
+    private productSkuAttributeDAO: ProductSkuAttributeDAO;
+    
     constructor() {
-        this.productsDao = new ProductsDAO();
-
+        this.productSkuAttributeDAO = new ProductSkuAttributeDAO();
+        
     }
-
-    async save(item: Product) {
+    
+    async save(item: ProductSkuAttribute) {
         try {
-            let data = await this.productsDao.search({id: item.id});
+            let data = await this.productSkuAttributeDAO.search({id: item.id});
                 if(item.id!=null && data.length>0){
-                    let userData : any = await this.productsDao.save(item);
+                    let userData : any = await this.productSkuAttributeDAO.save(item);
                     let returnData = {
                         id: item.id,
                         message: "Updated Successfully"
                     }
                     return Promise.resolve(returnData);
                 } else if (item.id == null && data.length > 0) {
-                    return Promise.reject({ message: "product Already Exits" });
+                    return Promise.reject({ message: "name Already Exits" });
                 }else {
-                    let updateUser = await this.productsDao.save(item);
-                        return Promise.resolve(updateUser);
+                    let updateproduct = await this.productSkuAttributeDAO.save(item);
+                        return Promise.resolve(updateproduct);
                 }
             }
                   catch (error) {
@@ -36,7 +39,7 @@ export class ProductsService {
 
         async entity(id: any) {
             try {
-                let data: any = await this.productsDao.entity(id);
+                let data: any = await this.productSkuAttributeDAO.entity(id);
                 return Promise.resolve(data);
             } catch (error) {
                 return Promise.reject(error);
@@ -46,9 +49,9 @@ export class ProductsService {
 
         async delete(id: any) {
             try {
-                let data: Product = (await this.productsDao.entity(id))
-                data.active = false;
-                let result: any = await this.productsDao.save(data);
+                let data: ProductSkuAttribute = (await this.productSkuAttributeDAO.entity(id))
+               // data.active = false;
+                let result: any = await this.productSkuAttributeDAO.save(data);
                 let returnData = {
                     id: id,
                     message: "Removed Successfully"
@@ -62,7 +65,7 @@ export class ProductsService {
 
         async findAll() {
             try {
-                let data: any = await this.productsDao.findAll();
+                let data: any = await this.productSkuAttributeDAO.findAll();
                 return Promise.resolve(data)
             } catch (error) {
                 return Promise.reject(error);
@@ -70,12 +73,5 @@ export class ProductsService {
         }
 
 
-
-
-
-
-
-
-
-  
+ 
 }

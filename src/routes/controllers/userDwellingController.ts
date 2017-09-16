@@ -45,6 +45,13 @@ export class UserDwellingController{
   
           });
 
+        this.router.post("/user", async(request: Request, response: Response) => {
+            let reqData= request.body.data ? request.body.data : {};
+            const result = this.userDwellingService.findOneAndAll(reqData);
+            App.Send(request, response, result);
+
+        });  
+
 
         return this.router;
     }

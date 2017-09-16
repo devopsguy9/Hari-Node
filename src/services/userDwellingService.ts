@@ -29,11 +29,13 @@ export class UserDwellingService {
                     }
                     return Promise.resolve(returnData);
                 } else if (item.id == null && data.length > 0) {
-                    return Promise.reject({ message: "user Already Exits" });
-                }else {
+                    let insertUserDwelling = await this.userDwellingDAO.save(item);
+                    return Promise.resolve(insertUserDwelling);
+                    //return Promise.resolve({ message: "user Already Exits" });
+                }else if(item.id==null && data.length == 0){
                     
                     let updateUserDwelling = await this.userDwellingDAO.save(item);
-                        return Promise.resolve(updateUserDwelling);
+                        return Promise.reject({message:"We cant insert user dwelling without user"});
                 }
             }
                   catch (error) {
@@ -44,36 +46,36 @@ export class UserDwellingService {
 
 
 
-    // async findOneAndAll(item:UserDwelling) {
-    //         try {
-    //             let users = item.users.id;
-    //             let main = item.id;
-    //             console.log("User id is: ",users);
-    //             let data = await this.userDwellingDAO.search({users: item.users.id});
-    //             console.log(data);
+    async findOneAndAll(item:UserDwelling) {
+            try {
+                let users = item.users.id;
+                let main = item.id;
+                console.log("User id is: ",users);
+                let data = await this.userDwellingDAO.search({users: item.users.id});
+                console.log(data);
 
-    //             if(users != null && data.length>0){
-    //                 console.log("I am just a tester");
-    //                 let findoneuserdwelling = await this.userDwellingDAO.findAlll(users);
-    //                 console.log(findoneuserdwelling)
-    //                 return Promise.resolve(findoneuserdwelling)
+                if(users != null && data.length>0){
+                    console.log("I am just a tester");
+                    let findoneuserdwelling = await this.userDAO.entity1(users);
+                    console.log(findoneuserdwelling)
+                    return Promise.resolve(findoneuserdwelling)
                 
-    //             }else if(users !=null && data.length == 0){
-    //                 console.log("I am stumped")
-    //                 let findempty = await this.userDwellingDAO.findEmpty(users);
-    //                 console.log(findempty);
-    //                 return Promise.resolve(findempty)
-    //             }else if(users == null) {
+                }else if(users !=null && data.length == 0){
+                    console.log("I am stumped")
+                    let findempty = await this.userDAO.entity1(users);
+                    console.log(findempty);
+                    return Promise.resolve(findempty)
+                }else if(users == null) {
                     
-    //                     //return Promise.reject({ message: "user Already Exits" });
-    //                     let findalluserdwellings = await this.userDwellingDAO.findAll();
-    //                     return Promise.resolve(findalluserdwellings);
-    //             }
-    //         }
-    //          catch (error) {
-    //             return Promise.reject(error);
-    //         }
-    //     }
+                        //return Promise.reject({ message: "user Already Exits" });
+                        let findalluserdwellings = await this.userDAO.findAll1();
+                        return Promise.resolve(findalluserdwellings);
+                }
+            }
+             catch (error) {
+                return Promise.reject(error);
+            }
+        }
 
         async entity(id: any) {
             try {
@@ -87,10 +89,11 @@ export class UserDwellingService {
         async reverse(item:User){
             try{
                 let user = item.id;
-                let dweid = item.user_dwellings;
+               // let dweid = item.user_dwellings;
 
                 console.log("User id is: ",user);
                 let data = await this.userDwellingDAO.search({user: item.id});
+                //let data1 = await this.userDAO.search({user:item.id});
                // let findoneuserdwelling = await this.userDwellingDAO.right(user);
                 console.log(data);
                 // console.log("findoneuserdwelling is ",findoneuserdwelling);

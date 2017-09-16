@@ -54,9 +54,6 @@ export class SubCommunity{
     @Column({name:"active"})
     active:boolean;
     
-    @OneToMany(type=>Dwelling,dwellings=>dwellings.subCommunity,{
-        cascadeInsert:true,
-        cascadeUpdate:true
-    })
+    @OneToMany(type=>Dwelling,dwellings=>dwellings.subCommunity)
     dwellings:Dwelling[];
 }

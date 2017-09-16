@@ -24,14 +24,11 @@ export class SpecialRequest{
     @Column({name:"override"})
     override:boolean;
 
-    @JoinTable({name:"supplier"})
-    @ManyToMany(type=>Supplier)
-    suppliers:Supplier;
+    // @JoinTable({name:"supplier"})
+    // @ManyToMany(type=>Supplier)
+    // suppliers:Supplier;
 
-    @OneToMany(type=>SpecialRequestDetail,special_request_details=>special_request_details.special_requests,{
-        cascadeInsert:true,
-        cascadeUpdate:true
-    })
+    @OneToMany(type=>SpecialRequestDetail,special_request_details=>special_request_details.special_requests)
     special_request_details:SpecialRequestDetail[];
 
 }

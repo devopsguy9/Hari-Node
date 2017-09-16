@@ -11,7 +11,38 @@ public rep: Repository<User>;
         this.rep = getEntityManager().getRepository(User);
     }
     
-    
+    entity1(id){
+        return this.rep.findOneById(id,{
+            alias:"user",
+                    leftJoinAndSelect:{
+                        "user_dwelling":"user.user_dwellings",
+                        "holdrequests":"user.holdrequests",
+                        "dwellings" : "user_dwelling.dwellings",
+                        "sub_communities" : "dwellings.subCommunity",
+                        "community" : "sub_communities.community"
+        
+                        // "sub_communities" : "dwellings.subCommunity",
+                        // "community" : "sub_communities.community"
+                    }
+        });
+    }
+
+    findAll1(){
+        return this.rep.find({},{
+            alias:"user",
+            leftJoinAndSelect:{
+                "user_dwelling":"user.user_dwellings",
+                "holdrequests":"user.holdrequests",
+                "dwellings" : "user_dwelling.dwellings",
+                "sub_communities" : "dwellings.subCommunity",
+                "community" : "sub_communities.community"
+
+                // "sub_communities" : "dwellings.subCommunity",
+                // "community" : "sub_communities.community"
+            }
+        });
+    }
+
   /*  save(data:user){
         console.log("In user DAO");
     return this.rep.persist(data);
