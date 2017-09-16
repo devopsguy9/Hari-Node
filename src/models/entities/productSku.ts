@@ -18,12 +18,18 @@ export class ProductSku{
     @ManyToOne(type=>Product)
     products:Product;
 
+    @Column({name:"price"})
+    price:number;
+
+    @Column({name:"effective"})
+    effective:Date;
+
     //@Column({name:"user_billings"})
     @OneToMany(type=>UserBilling,user_billings=>user_billings.product_skus)
     user_billings:UserBilling;
 
   
-    @OneToOne(type=>ProductSkuPrice,product_sku_prices=>product_sku_prices.product_sku_id)
-    product_sku_prices:ProductSkuPrice;
+    // @OneToOne(type=>ProductSkuPrice,product_sku_prices=>product_sku_prices.product_sku_id)
+    // product_sku_prices:ProductSkuPrice;
 
 }

@@ -3,11 +3,11 @@
       "name": "default",
       "driver": {
         "type": "mysql",
-        "host" :"35.202.92.50",
+        "host" :"localhost",
         "port": 3306,
         "username": "root",
-        "password": "Shashi123*",
-        "database": "milkman",
+        "password": "digitallync",
+        "database": "milkman1",
         "usePool": true
       },
       "autoSchemaSync": false,

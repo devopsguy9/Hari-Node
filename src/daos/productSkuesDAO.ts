@@ -13,8 +13,8 @@ export class ProductSkuesDAO extends BaseDAO<ProductSku>{
             return this.rep.find({},{
                 alias : "product_skus",
                 leftJoinAndSelect:{
-                    "products" : "product_skus.products",
-                    "product_sku_prices":"product_skus.product_sku_prices"
+                    "products" : "product_skus.products"
+                   // "product_sku_prices":"product_skus.product_sku_prices"
                     
                 }
     
@@ -25,8 +25,8 @@ export class ProductSkuesDAO extends BaseDAO<ProductSku>{
             return this.rep.findOneById(id,{
                 alias: "product_skus",
                 leftJoinAndSelect: {
-                    "products" : "productskus.products",
-                    "product_sku_prices":"product_skus.product_sku_prices"
+                    "products" : "productskus.products"
+                   // "product_sku_prices":"product_skus.product_sku_prices"
     
                    
                 },  

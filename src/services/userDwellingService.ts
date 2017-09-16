@@ -16,7 +16,7 @@ export class UserDwellingService {
         this.conn = new UserDwelling();
     }
     
-   async save(item: UserDwelling) {
+    async save(item: UserDwelling) {
         try {
           //  console.log("in try");
             //console.log(item.users.id);
@@ -32,10 +32,10 @@ export class UserDwellingService {
                     let insertUserDwelling = await this.userDwellingDAO.save(item);
                     return Promise.resolve(insertUserDwelling);
                     //return Promise.resolve({ message: "user Already Exits" });
-                }else if(item.id==null && data.length == 0){
+                }else if(item.id==null){
                     
                     let updateUserDwelling = await this.userDwellingDAO.save(item);
-                        return Promise.reject({message:"We cant insert user dwelling without user"});
+                        return Promise.resolve(updateUserDwelling);
                 }
             }
                   catch (error) {
@@ -43,6 +43,7 @@ export class UserDwellingService {
                     }
         
         }  
+
 
 
 
@@ -89,6 +90,8 @@ export class UserDwellingService {
         async reverse(item:User){
             try{
                 let user = item.id;
+                let dwellingd = item.user_dwellings;
+                let address = item.user_dwellings;
                // let dweid = item.user_dwellings;
 
                 console.log("User id is: ",user);

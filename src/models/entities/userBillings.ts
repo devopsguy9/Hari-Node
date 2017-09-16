@@ -34,8 +34,8 @@ export class UserBilling{
     @ManyToOne(type=>UserDwelling)
     user_dwellings:UserDwelling;
 
-    @JoinColumn({name:"delivery_schedules"})
-    @ManyToOne(type=>DeliverySchedule)
+    
+    @OneToMany(type=>DeliverySchedule,delivery_schedules=>delivery_schedules.user_billing)
     delivery_schedules:DeliverySchedule[];
 
     @JoinColumn({name:"hold_request"})

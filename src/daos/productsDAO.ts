@@ -19,7 +19,7 @@ public rep: Repository<Product>;
                 "product_category_id":"products.product_category_id",
                 "supplier_id":"products.supplier_id",
                 "product_skus" : "products.product_skus",
-                "product_sku_prices":"product_skus.product_sku_prices"
+                //"product_sku_prices":"product_skus.product_sku_prices"
 
 
             }
@@ -34,7 +34,7 @@ public rep: Repository<Product>;
                 "product_category_id":"products.product_category_id",
                 "supplier_id":"products.supplier_id",
                 "product_skus" : "products.product_skus",
-                "product_sku_prices":"product_skus.product_sku_prices"
+                //"product_sku_prices":"product_skus.product_sku_prices"
 
             }
         });

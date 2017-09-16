@@ -24,8 +24,8 @@ export class DeliverySchedule{
     @Column({name:"quantity"})
     quantity:number;
 
-
-    @OneToMany(type=>UserBilling,user_billings=>user_billings.delivery_schedules)
+    @JoinColumn({name:"user_billing"})
+    @ManyToOne(type=>UserBilling)
     user_billing:UserBilling[];
 
     @Column({name:"supplier_id"})
