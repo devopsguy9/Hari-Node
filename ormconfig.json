@@ -3,14 +3,14 @@
       "name": "default",
       "driver": {
         "type": "mysql",
-        "host" :"localhost",
+        "host" :"35.202.92.50",
         "port": 3306,
         "username": "root",
-        "password": "digitallync",
-        "database": "milkman3",
+        "password": "Shashi123*",
+        "database": "milkman",
         "usePool": true
       },
-      "autoSchemaSync": true,
+      "autoSchemaSync": false,
       "entities": [
         "dist/models/entities/*.js"
       ],
