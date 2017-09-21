@@ -17,9 +17,9 @@ export class DeliverySchedule{
     @ManyToOne(type=>UserDwelling)
     user_dwellings:UserDwelling;
 
-    // @JoinTable({name:"product_skus"})
-    // @ManyToMany(type=>ProductSku)
-    // product_sku_id:ProductSku;
+    @ManyToMany(type=>ProductSku,product_sku=>product_sku.delivery_schedules)
+    @JoinTable()
+    product_skus:ProductSku[];
 
     @Column({name:"quantity"})
     quantity:number;

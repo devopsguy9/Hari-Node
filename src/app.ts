@@ -105,8 +105,8 @@ createConnection().then(async connection => {
      let apiDocs = new APIDocs();
      app.use('/swagger', apiDocs.getRouter());
 
-    app.listen(3000);
-    console.log("Listen port: 3000");
+    app.listen(8000);
+    console.log("Listen port: 8000");
 }).catch(error => console.log("TypeORM connection error: ", error));
 
 process.on('uncaughtException', function(err) {

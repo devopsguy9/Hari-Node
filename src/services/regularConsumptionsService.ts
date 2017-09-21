@@ -1,10 +1,13 @@
+import * as console from 'console';
 import { App } from "./../utils/App";
 import { RegularConsumption } from "./../models/entities/regularConsumptions";
 import { RegularConsumptionsDAO } from "./../daos/regularConsumptionsDAO";
+import {ProductSku} from './../models/entities/productSku';
+import {ProductSkuesDAO} from './../daos/productSkuesDAO';
 
 export class RegularConsumptionsService {
     private regular_ConsumptionsDao: RegularConsumptionsDAO;
-
+    //pri regular_ConsumptionsService = new RegularConsumptionsService();
 
     constructor() {
         this.regular_ConsumptionsDao = new RegularConsumptionsDAO();
@@ -29,15 +32,47 @@ export class RegularConsumptionsService {
         }
     }
 
+    async search1(item: ProductSku) {
+        try {
+            let name = item.name;
+            let data: any = await this.regular_ConsumptionsDao.search1(name);
+            return Promise.resolve(data)
+        } catch (error) {
+            return Promise.reject(error);
+        }
+    }
+
     async save(item: RegularConsumption) {
         try {
             if (this.validate(item)) {
-                let regular_ConsumptionsData: any = await this.regular_ConsumptionsDao.save(item);
-                let returnData = {
-                    id: item.id,
-                    message: "Saved Successfully"
+                let pro = item.product_skus;
+                 let pro1 = new ProductSku();
+                 //pro1.id = item.product_skus;
+                 console.log(item.product_skus);
+                 
+                // console.log(pro1.id);
+                let result = await this.regular_ConsumptionsDao.search1(item.product_skus);
+
+                console.log(result);
+                if(result.length>0){
+                    let item1 = {
+                        id:item.id,
+                        user_dwelling_id:item.user_dwelling_id,
+                        supplier_id:item.supplier_id,
+                        quantity:item.quantity,
+                        product_skus:result
+                    }
+                    let regular_ConsumptionsData: any = await this.regular_ConsumptionsDao.save(item1);
+                    let returnData = {
+                        id: item.id,
+                        message: "Saved Successfully"
+                    }
+                    return Promise.resolve(returnData);
                 }
-                return Promise.resolve(returnData);
+                // pro1.name = "High fat Milk";
+                // pro1.active = true;
+                // pro1.price = 25;
+                
             } else {
                 let returnData = {
                     message: "Please enter proper values."

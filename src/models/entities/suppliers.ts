@@ -1,6 +1,8 @@
+import { RegularConsumption } from './regularConsumptions';
+import { SpecialRequest } from './specialRequests';
 import { Product } from './products';
 import { UserBilling } from './userBillings';
-import {Entity,Column,PrimaryGeneratedColumn,OneToMany,ManyToOne} from 'typeorm';
+import {Entity,Column,PrimaryGeneratedColumn,OneToMany,ManyToOne,ManyToMany} from 'typeorm';
 import {DailyOrderSheet} from './dailyOrderSheets';
 
 @Entity("suppliers")
@@ -38,5 +40,10 @@ export class Supplier{
     @OneToMany(type=>Product,products_id=>products_id.supplier_id)
     products_id:Product[];
 
+    @ManyToMany(type=>SpecialRequest,special_request=>special_request.suppliers)
+    special_requests:SpecialRequest[];
+
+    @OneToMany(type=>RegularConsumption,regular_consumptions=>regular_consumptions.supplier_id)
+    regular_consumptions:RegularConsumption[];
 
 }

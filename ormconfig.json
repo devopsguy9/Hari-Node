@@ -7,10 +7,10 @@
         "port": 3306,
         "username": "root",
         "password": "digitallync",
-        "database": "milkman1",
+        "database": "milkman3",
         "usePool": true
       },
-      "autoSchemaSync": false,
+      "autoSchemaSync": true,
       "entities": [
         "dist/models/entities/*.js"
       ],

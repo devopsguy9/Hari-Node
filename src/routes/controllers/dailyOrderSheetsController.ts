@@ -9,7 +9,7 @@ export class DailyOrderSheetsController {
 
         getRouter():Router{
     
-        this.router.put("/", async(request: Request, response: Response) => {
+        this.router.post("/", async(request: Request, response: Response) => {
             let reqData= request.body ? request.body.data : {};
             const result = this.daily_Order_SheetsService.search(reqData);
             App.Send(request, response, result);

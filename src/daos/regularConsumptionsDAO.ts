@@ -1,17 +1,22 @@
 import { getEntityManager, Repository } from "typeorm";
 import {RegularConsumption} from "./../models/entities/regularConsumptions";
-
+import {ProductSku} from './../models/entities/productSku';
 
 export class RegularConsumptionsDAO {
 
     public dao: Repository<RegularConsumption>;
-
+    public dao1: Repository<ProductSku>;
     constructor() {
         this.dao = getEntityManager().getRepository(RegularConsumption);
+        this.dao1 = getEntityManager().getRepository(ProductSku);
     }
 
     search(data: any) {
         return this.dao.find(data)
+    }
+
+    search1(data: any) {
+        return this.dao1.find(data)
     }
 
     save(data: RegularConsumption) {

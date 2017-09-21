@@ -5,6 +5,7 @@ import {DailyOrderSheet} from "./../models/entities/dailyOrderSheets";
 export class DailyOrderSheetsDAO {
 
     public dao: Repository<DailyOrderSheet>;
+   // public data: Repository<DailyOrderSheet>;
 
     constructor() {
         this.dao = getEntityManager().getRepository(DailyOrderSheet);

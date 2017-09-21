@@ -24,9 +24,9 @@ export class SpecialRequest{
     @Column({name:"override"})
     override:boolean;
 
-    // @JoinTable({name:"supplier"})
-    // @ManyToMany(type=>Supplier)
-    // suppliers:Supplier;
+    @ManyToMany(type=>Supplier,supplier=>supplier.special_requests)
+    @JoinTable()
+    suppliers:Supplier[];
 
     @OneToMany(type=>SpecialRequestDetail,special_request_details=>special_request_details.special_requests)
     special_request_details:SpecialRequestDetail[];

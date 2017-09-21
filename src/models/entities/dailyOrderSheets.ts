@@ -13,9 +13,13 @@ export class DailyOrderSheet{
     @ManyToOne(type=>Manufacturer)
     manufacturers:Manufacturer;
 
-    // @JoinTable({name:"product_sku"})
-    // @ManyToMany(type=>ProductSku)
-    // product_skus:ProductSku;
+    
+    @ManyToMany(type=>ProductSku,product_sku=>product_sku.daily_order_sheets,{
+        cascadeInsert:true,
+        cascadeUpdate:true
+    })
+    @JoinTable()
+    product_skus:ProductSku[];
 
     @Column({name:"order_date"})
     order_date:Date;

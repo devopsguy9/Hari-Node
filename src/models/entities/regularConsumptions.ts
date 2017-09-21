@@ -1,3 +1,4 @@
+import { Supplier } from './suppliers';
 import { UserDwelling } from './userDwellings';
 import { ProductSku } from './productSku';
 import { Column, Entity, JoinColumn, JoinTable, ManyToMany, PrimaryGeneratedColumn,OneToMany,ManyToOne } from 'typeorm';
@@ -12,13 +13,17 @@ export class RegularConsumption{
     @ManyToOne(type=>UserDwelling)
     user_dwelling_id:UserDwelling[];
 
-    // @JoinTable({name:"user"})
-    // @ManyToMany(type=>ProductSku)
-    // product_skus:ProductSku;
+    @ManyToMany(type=>ProductSku,product_sku=>product_sku.regular_consumptions,{
+        cascadeInsert:true,
+        cascadeUpdate:true
+    })
+    @JoinTable({name:"regular_productsku_mapper"})
+    product_skus:ProductSku[];
 
     @Column({name:"quantity"})
     quantity:number;
 
-    @Column({name:"suppiler_id"})
-    supplier_id:number;
+    @ManyToOne(type=>Supplier)
+    @JoinColumn({name:"suppiler_id"})
+    supplier_id:Supplier[];
 }

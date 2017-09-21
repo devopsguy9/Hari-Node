@@ -1,14 +1,18 @@
+import * as console from 'console';
+import { log } from 'util';
 import { App } from "./../utils/App";
 import { DailyOrderSheet } from "./../models/entities/dailyOrderSheets";
 import { DailyOrderSheetsDAO } from "./../daos/dailyOrderSheetsDAO";
+import {ProductSku} from './../models/entities/productSku';
+import {ProductSkuesDAO} from './../daos/productSkuesDao';
 
 export class DailyOrderSheetsService {
     private dailyOrderSheetsDao: DailyOrderSheetsDAO;
-
+    private productskuesDao : ProductSkuesDAO;
 
     constructor() {
         this.dailyOrderSheetsDao = new DailyOrderSheetsDAO();
-
+        this.productskuesDao = new ProductSkuesDAO();
     }
 
     async entity(id: string) {
@@ -32,6 +36,21 @@ export class DailyOrderSheetsService {
     async save(item: DailyOrderSheet) {
         try {
             if (this.validate(item)) {
+                // let prosku = item.product_skus;
+                // // let data1 = new DailyOrderSheet();
+                 let product_skus = new ProductSku();
+                let data : any = await this.productskuesDao.search(item.product_skus);
+                product_skus = data;
+                
+                item.product_skus = [product_skus];
+
+
+
+                // var data = {
+                //     data1:item
+                //     //product_skus:data1.product_skus
+                // }
+
                 let daily_Order_SheetsData: any = await this.dailyOrderSheetsDao.save(item);
                 let returnData = {
                     id: item.id,

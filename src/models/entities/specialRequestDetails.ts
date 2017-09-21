@@ -12,9 +12,9 @@ export class SpecialRequestDetail{
     @ManyToOne(type=>SpecialRequest)
     special_requests:SpecialRequest;
 
-    // @JoinTable({name:"product_skus"})
-    // @ManyToMany(type=>ProductSku)
-    // product_skus:ProductSku;
+    @ManyToMany(type=>ProductSku,product_sku=>product_sku.special_request_details)
+    @JoinTable()
+    product_skus:ProductSku[];
 
     @Column({name:"quantity"})
     quantity:number;
