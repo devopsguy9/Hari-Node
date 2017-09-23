@@ -4,7 +4,7 @@ import { App } from "./../utils/App";
 import { DailyOrderSheet } from "./../models/entities/dailyOrderSheets";
 import { DailyOrderSheetsDAO } from "./../daos/dailyOrderSheetsDAO";
 import {ProductSku} from './../models/entities/productSku';
-import {ProductSkuesDAO} from './../daos/productSkuesDao';
+import {ProductSkuesDAO} from './../daos/productSkuesDAO';
 
 export class DailyOrderSheetsService {
     private dailyOrderSheetsDao: DailyOrderSheetsDAO;
