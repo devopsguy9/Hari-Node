@@ -47,7 +47,10 @@ export class ProductSku{
     })
     regular_consumptions:RegularConsumption[];
 
-    @ManyToMany(type=>SpecialRequestDetail,special_request_detail=>special_request_detail.product_skus)
+    @ManyToMany(type=>SpecialRequestDetail,special_request_detail=>special_request_detail.product_skus,{
+        cascadeInsert:true,
+        cascadeUpdate:true
+    })
     special_request_details:SpecialRequestDetail[];
 
   

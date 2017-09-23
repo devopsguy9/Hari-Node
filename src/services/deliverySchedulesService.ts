@@ -32,12 +32,30 @@ export class DeliverySchedulesService {
     async save(item: DeliverySchedule) {
         try {
             if (this.validate(item)) {
-                let delivery_SchedulesData: any = await this.delivery_SchedulesDao.save(item);
+                let itemid = item.product_skus;
+                console.log(itemid);
+                let res = await this.delivery_SchedulesDao.search1(item.product_skus);
+                console.log(res);
+                if(res.length>0){
+                let item2={
+                    id:item.id,
+                    community_id:item.community_id,
+                    delivery_date:item.delivery_date,
+                    quantity:item.quantity,
+                    sub_communities:item.sub_communities,
+                    supplier_id:item.supplier_id,
+                    user_billing:item.user_billing,
+                    user_dwellings:item.user_dwellings,
+                    product_skus:res
+                }
+                let delivery_SchedulesData: any = await this.delivery_SchedulesDao.save(item2);
                 let returnData = {
                     id: item.id,
                     message: "Saved Successfully"
                 }
+            
                 return Promise.resolve(returnData);
+            }
             } else {
                 let returnData = {
                     message: "Please enter proper values."

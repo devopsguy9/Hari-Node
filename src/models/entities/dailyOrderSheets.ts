@@ -18,7 +18,7 @@ export class DailyOrderSheet{
         cascadeInsert:true,
         cascadeUpdate:true
     })
-    @JoinTable()
+    @JoinTable({name:"daily_order_sheets_product_skus_product_skus_id"})
     product_skus:ProductSku[];
 
     @Column({name:"order_date"})

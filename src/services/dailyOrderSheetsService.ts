@@ -36,28 +36,31 @@ export class DailyOrderSheetsService {
     async save(item: DailyOrderSheet) {
         try {
             if (this.validate(item)) {
-                // let prosku = item.product_skus;
-                // // let data1 = new DailyOrderSheet();
-                 let product_skus = new ProductSku();
-                let data : any = await this.productskuesDao.search(item.product_skus);
-                product_skus = data;
+              
+                 console.log(item.product_skus);
+                 
+               
+                let result = await this.dailyOrderSheetsDao.search1(item.product_skus);
+
+                console.log(result);
+                if(result.length>0){
+                    let item1 = {
+                        id:item.id,
+                        manufacturers:item.manufacturers,
+                        order_date:item.order_date,
+                        quantity:item.quantity,
+                        suppliers:item.suppliers,
+                        product_skus:result
+                    }
                 
-                item.product_skus = [product_skus];
-
-
-
-                // var data = {
-                //     data1:item
-                //     //product_skus:data1.product_skus
-                // }
-
-                let daily_Order_SheetsData: any = await this.dailyOrderSheetsDao.save(item);
-                let returnData = {
-                    id: item.id,
-                    message: "Saved Successfully"
+                    let regular_ConsumptionsData: any = await this.dailyOrderSheetsDao.save(item1);
+                    let returnData = {
+                        id: item.id,
+                        message: "Saved Successfully"
+                    }
+                    return Promise.resolve(returnData);
                 }
-                return Promise.resolve(returnData);
-            } else {
+                } else {
                 let returnData = {
                     message: "Please enter proper values."
                 }

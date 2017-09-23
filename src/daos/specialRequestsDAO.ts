@@ -5,14 +5,18 @@ import {SpecialRequest} from "./../models/entities/specialRequests";
 export class SpecialRequestsDAO {
 
     public dao: Repository<SpecialRequest>;
+  
 
     constructor() {
         this.dao = getEntityManager().getRepository(SpecialRequest);
+      
     }
 
     search(data: any) {
         return this.dao.find(data)
     }
+
+  
 
     save(data: SpecialRequest) {
         return this.dao.persist(data);

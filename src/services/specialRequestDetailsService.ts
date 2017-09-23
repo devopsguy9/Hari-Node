@@ -1,6 +1,8 @@
 import { App } from "./../utils/App";
 import { SpecialRequestDetail } from "./../models/entities/specialRequestDetails";
 import { SpecialRequestDetailsDAO } from "./../daos/specialRequestDetailsDAO";
+import {ProductSku} from './../models/entities/productSku';
+import {ProductSkuesDAO} from './../daos/productSkuesDAO';
 
 export class SpecialRequestDetailsService {
     private special_Requests_DetailsDao: SpecialRequestDetailsDAO;
@@ -32,12 +34,26 @@ export class SpecialRequestDetailsService {
     async save(item: SpecialRequestDetail) {
         try {
             if (this.validate(item)) {
-                let regular_consumptionsData: any = await this.special_Requests_DetailsDao.save(item);
+                let psq = item.product_skus;
+                let psq1 = new ProductSku();
+                console.log(psq);
+                let res = await this.special_Requests_DetailsDao.search1(item.product_skus);
+                console.log(res);
+                if(res.length>0){
+                    let item1 = {
+                        id:item.id,
+                        quantity:item.quantity,
+                        special_requests:item.special_requests,
+                        product_skus:res
+                    }
+                
+                let regular_consumptionsData: any = await this.special_Requests_DetailsDao.save(item1);
                 let returnData = {
                     id: item.id,
                     message: "Saved Successfully"
                 }
                 return Promise.resolve(returnData);
+            }
             } else {
                 let returnData = {
                     message: "Please enter proper values."

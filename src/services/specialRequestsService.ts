@@ -1,13 +1,18 @@
 import { App } from "./../utils/App";
 import { SpecialRequest } from "./../models/entities/specialRequests";
 import { SpecialRequestsDAO } from "./../daos/specialRequestsDAO";
+import { Supplier } from "./../models/entities/suppliers";
+import { SuppliersDAO } from "./../daos/suppliersDAO";
 
 export class SpecialRequestsService {
     private special_RequestsDao: SpecialRequestsDAO;
+    private suppliersDAO: SuppliersDAO;
+    
 
 
     constructor() {
         this.special_RequestsDao = new SpecialRequestsDAO();
+        this.suppliersDAO = new SuppliersDAO();
 
     }
 

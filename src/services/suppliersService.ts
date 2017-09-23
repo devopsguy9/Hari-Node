@@ -60,9 +60,9 @@ export class SuppliersService {
         }
 
 
-        async findAll() {
+        async findAll(id:any) {
             try {
-                let data: any = await this.suppliersDao.findAll();
+                let data: any = await this.suppliersDao.search(id);
                 return Promise.resolve(data)
             } catch (error) {
                 return Promise.reject(error);

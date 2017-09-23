@@ -25,7 +25,7 @@ export class SpecialRequest{
     override:boolean;
 
     @ManyToMany(type=>Supplier,supplier=>supplier.special_requests)
-    @JoinTable()
+    @JoinTable({name:"special_request_suppliers_suppliers_id"})
     suppliers:Supplier[];
 
     @OneToMany(type=>SpecialRequestDetail,special_request_details=>special_request_details.special_requests)

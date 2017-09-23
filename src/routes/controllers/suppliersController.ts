@@ -10,8 +10,8 @@ export class SuppliersController {
         getRouter():Router{
             
             this.router.post("/", async(request: Request, response: Response) => {
-              //  let reqData= request.body ? request.body.data : {};
-                const result = this.suppliersService.findAll();
+                let reqData= request.body ? request.body.data : {};
+                const result = this.suppliersService.findAll(reqData);
                 App.Send(request, response, result);
     
             });

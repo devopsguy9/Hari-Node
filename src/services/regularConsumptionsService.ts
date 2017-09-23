@@ -4,6 +4,7 @@ import { RegularConsumption } from "./../models/entities/regularConsumptions";
 import { RegularConsumptionsDAO } from "./../daos/regularConsumptionsDAO";
 import {ProductSku} from './../models/entities/productSku';
 import {ProductSkuesDAO} from './../daos/productSkuesDAO';
+ 
 
 export class RegularConsumptionsService {
     private regular_ConsumptionsDao: RegularConsumptionsDAO;
@@ -41,7 +42,39 @@ export class RegularConsumptionsService {
             return Promise.reject(error);
         }
     }
+  //mujahed api
+    async search2(id:any){
+        try {
+            let data: any = await this.regular_ConsumptionsDao.search2(id);
+            return Promise.resolve(data)
+        } catch (error) {
+            return Promise.reject(error);
+        }
+    }
+     //to findoneandall methd
+     async findOneAndAll(item:RegularConsumption) {
+            try {
+                
+                let id = item.supplier_id;
+                console.log("reg consump id is: ",id);
+                let data = await this.regular_ConsumptionsDao.search3({id});
+                console.log(data);
 
+                if(id != null){
+                    console.log("I am just a tester");
+                    let findoneregcon = await this.regular_ConsumptionsDao.search2({supplier_id:item.supplier_id,user_dwelling_id:item.user_dwelling_id});
+                    console.log(findoneregcon)
+                    return Promise.resolve(findoneregcon)                
+                    }else if(id == null) {                    
+                        //return Promise.reject({ message: "user Already Exits" });
+                        let findallregcon= await this.regular_ConsumptionsDao.findAll1();
+                        return Promise.resolve(findallregcon);
+                }
+            }
+             catch (error) {
+                return Promise.reject(error);
+            }
+        }
     async save(item: RegularConsumption) {
         try {
             if (this.validate(item)) {

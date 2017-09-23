@@ -13,7 +13,7 @@ export class SpecialRequestDetail{
     special_requests:SpecialRequest;
 
     @ManyToMany(type=>ProductSku,product_sku=>product_sku.special_request_details)
-    @JoinTable()
+    @JoinTable({name:"special_request_details_product_skus_product_skus_id"})
     product_skus:ProductSku[];
 
     @Column({name:"quantity"})
