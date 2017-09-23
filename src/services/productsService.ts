@@ -1,6 +1,6 @@
 import { App } from "./../utils/App";
 import { Product } from "./../models/entities/products";
-import { ProductsDAO } from "./../daos/productsDao";
+import { ProductsDAO } from "./../daos/productsDAO";
 
 export class ProductsService {
     private productsDao: ProductsDAO;
